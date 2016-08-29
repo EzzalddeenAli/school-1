@@ -3,8 +3,8 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title><?php echo $panelInit->settingsArray['siteTitle'] . " | " . $panelInit->language['dashboard'] ; ?></title>
-    <base href="<?php echo $panelInit->baseURL; ?>/" />
+    <title><?php echo $panelInit->settingsArray['siteTitle'] . " | " . $panelInit->language['dashboard'];?></title>
+    <base href="<?php echo $panelInit->baseURL;?>/" />
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <link href="{{URL::asset('assets/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet" type="text/css" />
     <link href="{{URL::asset('assets/bootstrap/css/font-awesome.min.css')}}" rel="stylesheet" type="text/css" />
@@ -14,9 +14,10 @@
     <link rel="stylesheet" href="{{URL::asset('assets/dist/css/skins/_all-skins.min.css')}}">
     <link rel="stylesheet" href="{{URL::asset('assets/css/intlTelInput.css')}}">
     <link href="{{URL::asset('assets/css/schoex.css')}}" rel="stylesheet" type="text/css" />
-    <?php if($panelInit->isRTL == 1){ ?>
+    <?php if ($panelInit->isRTL == 1) {?>
         <link href="{{URL::asset('assets/css/rtl.css')}}" rel="stylesheet" type="text/css" />
-    <?php } ?>
+    <?php }
+?>
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -25,7 +26,7 @@
     <![endif]-->
   </head>
 
-  <body class="hold-transition <?php echo $panelInit->defTheme; ?> sidebar-mini" ng-app="schoex" ng-controller="mainController">
+  <body class="hold-transition <?php echo $panelInit->defTheme;?> sidebar-mini" ng-app="schoex" ng-controller="mainController">
     <div class="wrapper">
 
       <!-- Main Header -->
@@ -35,18 +36,18 @@
         <a href="#/" class="logo">
           <!-- mini logo for sidebar mini 50x50 pixels -->
 
-          <span class="logo-mini"><?php echo $panelInit->settingsArray['siteTitle']; ?></span>
+          <span class="logo-mini"><?php echo $panelInit->settingsArray['siteTitle'];?></span>
           <!-- logo for regular state and mobile devices -->
           <span class="logo-lg">
               <?php
-              if($panelInit->settingsArray['siteLogo'] == "siteName"){
-                  echo $panelInit->settingsArray['siteTitle'];
-              }elseif($panelInit->settingsArray['siteLogo'] == "text"){
-                  echo $panelInit->settingsArray['siteLogoAdditional'];
-              }elseif($panelInit->settingsArray['siteLogo'] == "image"){
-                  echo "<img src='".URL::asset('assets/img/logo.png')."'/>";
-              }
-              ?>
+if ($panelInit->settingsArray['siteLogo'] == "siteName") {
+	echo $panelInit->settingsArray['siteTitle'];
+} elseif ($panelInit->settingsArray['siteLogo'] == "text") {
+	echo $panelInit->settingsArray['siteLogoAdditional'];
+} elseif ($panelInit->settingsArray['siteLogo'] == "image") {
+	echo "<img src='" . URL::asset('assets/img/logo.png') . "'/>";
+}
+?>
           </span>
         </a>
 
@@ -65,20 +66,20 @@
             <ul class="nav navbar-nav">
               <!-- Messages: style can be found in dropdown.less-->
               <?php
-              if(isset($latestVersion)){
-                  ?>
+if (isset($latestVersion)) {
+	?>
                   <li class="dropdown user user-menu">
                       <a href="#/upgrade" class="dropdown-toggle" data-toggle="dropdown">
                           <i class="glyphicon glyphicon-arrow-up"></i>
-                          <span><?php echo $panelInit->language['latestVersion']; ?> {{$latestVersion}}</span>
+                          <span><?php echo $panelInit->language['latestVersion'];?> {{$latestVersion}}</span>
                       </a>
                   </li>
                   <?php
-              }
-              ?>
+}
+?>
               <?php
-              if($role == "admin"){
-                  ?>
+if ($role == "admin") {
+	?>
                   <li class="dropdown messages-menu">
                     <!-- Menu toggle button -->
                     <a ng-click="chgAcYearModal()">
@@ -86,8 +87,8 @@
                     </a>
                   </li>
                   <?php
-              }
-              ?>
+}
+?>
 
               <!-- User Account Menu -->
               <li class="dropdown user user-menu">
@@ -110,21 +111,21 @@
                   <!-- Menu Footer-->
                   <li class="user-footer">
                       <div class="col-xs-4 text-center">
-                        <a href="#/accountSettings/profile"><?php echo $panelInit->language['ChgProfileData']; ?></a>
+                        <a href="#/accountSettings/profile"><?php echo $panelInit->language['ChgProfileData'];?></a>
                       </div>
                       <div class="col-xs-4 text-center">
-                        <a href="#/accountSettings/email"><?php echo $panelInit->language['chgEmailAddress']; ?></a>
+                        <a href="#/accountSettings/email"><?php echo $panelInit->language['chgEmailAddress'];?></a>
                       </div>
                       <div class="col-xs-4 text-center">
-                        <a href="#/accountSettings/password"><?php echo $panelInit->language['chgPassword']; ?></a>
+                        <a href="#/accountSettings/password"><?php echo $panelInit->language['chgPassword'];?></a>
                       </div>
                   </li>
                 </ul>
               </li>
               <li class="dropdown user user-menu">
-                  <a target="_self" href="<?php echo URL::to('/logout'); ?>">
+                  <a target="_self" href="<?php echo URL::to('/logout');?>">
                       <i class="fa fa-fw fa-sign-out"></i>
-                      <span><?php echo $panelInit->language['logout']; ?></span>
+                      <span><?php echo $panelInit->language['logout'];?></span>
                   </a>
               </li>
             </ul>
@@ -151,73 +152,73 @@
 
           <ul class="sidebar-menu">
               <?php
-              if($users->role == "admin" AND $users->customPermissionsType == "custom"){
-                  $userPerm = $users->customPermissionsAsJson();
-                  $performPermScan = true;
-              }
-              while (list($key, $value) = each($panelInit->panelItems)) {
-                  if(isset($value['activated']) AND !strpos($panelInit->settingsArray['activatedModules'],$value['activated']) ){ continue;  }
-                  if(!in_array($users->role, $value['permissions'])){
-                      continue;
-                  }
-                  if(isset($performPermScan) AND isset($value['cusPerm']) AND $value['cusPerm'] != ""){
-                      if(!in_array($value['cusPerm'],$userPerm)){
-                          continue;
-                      }
-                  }
-                  echo "<li ";
-                  if(isset($value['children'])){
-                      echo "class='treeview'";
-                  }
-                  echo ">";
-                  echo "<a ";
-                  if(!isset($value['children'])){
-                      echo "class='aj'";
-                  }
-                  if(isset($value['url'])){
-                      echo " href='".URL::to($value['url'])."'";
-                  }
-                  echo ">";
-                  echo "<i class='".$value['icon']."'></i><span>";
-                  if(isset($panelInit->language[$value['title']])){
-                      echo $panelInit->language[$value['title']];
-                  }else{
-                      echo $value['title'];
-                  }
-                  echo "</span>";
-                  if(isset($value['children'])){
-                      echo "<i class='fa fa-angle-left pull-right leftMenuExpand'></i>";
-                  }
-                  echo "</a>";
-                  if(isset($value['children'])){
-                      echo '<ul class="treeview-menu">';
-                      while (list($key2, $value2) = each($value['children'])) {
-                          if(isset($value2['activated']) AND !strpos($panelInit->settingsArray['activatedModules'],$value2['activated']) ){ continue;  }
-                          if(!in_array($users->role, $value2['permissions'])){
-                              continue;
-                          }
-                          if(isset($performPermScan) AND isset($value2['cusPerm']) AND $value2['cusPerm'] != ""){
-                              if(!in_array($value2['cusPerm'],$userPerm)){
-                                  continue;
-                              }
-                          }
-                          echo "<li>";
-                          echo "<a class='aj' href='".URL::to($value2['url'])."'>";
-                          echo "<i class='".$value2['icon']."'></i> ";
-                          if(isset($panelInit->language[$value2['title']])){
-                              echo $panelInit->language[$value2['title']];
-                          }else{
-                              echo $value2['title'];
-                          }
-                          echo "</a>";
-                          echo "</li>";
-                      }
-                      echo "</ul>";
-                  }
+if ($users->role == "admin" AND $users->customPermissionsType == "custom") {
+	$userPerm = $users->customPermissionsAsJson();
+	$performPermScan = true;
+}
+while (list($key, $value) = each($panelInit->panelItems)) {
+	if (isset($value['activated']) AND !strpos($panelInit->settingsArray['activatedModules'], $value['activated'])) {continue;}
+	if (!in_array($users->role, $value['permissions'])) {
+		continue;
+	}
+	if (isset($performPermScan) AND isset($value['cusPerm']) AND $value['cusPerm'] != "") {
+		if (!in_array($value['cusPerm'], $userPerm)) {
+			continue;
+		}
+	}
+	echo "<li ";
+	if (isset($value['children'])) {
+		echo "class='treeview'";
+	}
+	echo ">";
+	echo "<a ";
+	if (!isset($value['children'])) {
+		echo "class='aj'";
+	}
+	if (isset($value['url'])) {
+		echo " href='" . URL::to($value['url']) . "'";
+	}
+	echo ">";
+	echo "<i class='" . $value['icon'] . "'></i><span>";
+	if (isset($panelInit->language[$value['title']])) {
+		echo $panelInit->language[$value['title']];
+	} else {
+		echo $value['title'];
+	}
+	echo "</span>";
+	if (isset($value['children'])) {
+		echo "<i class='fa fa-angle-left pull-right leftMenuExpand'></i>";
+	}
+	echo "</a>";
+	if (isset($value['children'])) {
+		echo '<ul class="treeview-menu">';
+		while (list($key2, $value2) = each($value['children'])) {
+			if (isset($value2['activated']) AND !strpos($panelInit->settingsArray['activatedModules'], $value2['activated'])) {continue;}
+			if (!in_array($users->role, $value2['permissions'])) {
+				continue;
+			}
+			if (isset($performPermScan) AND isset($value2['cusPerm']) AND $value2['cusPerm'] != "") {
+				if (!in_array($value2['cusPerm'], $userPerm)) {
+					continue;
+				}
+			}
+			echo "<li>";
+			echo "<a class='aj' href='" . URL::to($value2['url']) . "'>";
+			echo "<i class='" . $value2['icon'] . "'></i> ";
+			if (isset($panelInit->language[$value2['title']])) {
+				echo $panelInit->language[$value2['title']];
+			} else {
+				echo $value2['title'];
+			}
+			echo "</a>";
+			echo "</li>";
+		}
+		echo "</ul>";
+	}
 
-                  echo "</li>";
-              }
-              ?>
+	echo "</li>";
+}
+?>
           </ul>
         </section>
         <!-- /.sidebar -->
@@ -239,16 +240,16 @@
     </div><!-- ./wrapper -->
     <!-- Main Footer -->
     <footer class="main-footer">
-      <strong><?php echo $panelInit->settingsArray['footer']; ?></strong> -  <a target="_BLANK" href="{{URL::to('/terms')}}"><?php echo $panelInit->language['schoolTerms']; ?></a>
+      <strong><?php echo $panelInit->settingsArray['footer'];?></strong> -  <a target="_BLANK" href="{{URL::to('/terms')}}"><?php echo $panelInit->language['schoolTerms'];?></a>
     </footer>
     <modal visible="chgAcYearModalShow">
         <div>
             <select class="form-control" id="selectedAcYear" ng-model="dashboardData.selectedAcYear">
-              <option ng-selected="year.id == '<?php echo $panelInit->selectAcYear; ?>'" ng-repeat="year in $root.dashboardData.academicYear" value="@{{year.id}}" ng-if="year.isDefault == '0'">@{{year.yearTitle}}</option>
-              <option ng-selected="year.id == '<?php echo $panelInit->selectAcYear; ?>'" ng-repeat="year in $root.dashboardData.academicYear" value="@{{year.id}}" ng-if="year.isDefault == '1'">@{{year.yearTitle}} - Default Year</option>
+              <option ng-selected="year.id == '<?php echo $panelInit->selectAcYear;?>'" ng-repeat="year in $root.dashboardData.academicYear" value="@{{year.id}}" ng-if="year.isDefault == '0'">@{{year.yearTitle}}</option>
+              <option ng-selected="year.id == '<?php echo $panelInit->selectAcYear;?>'" ng-repeat="year in $root.dashboardData.academicYear" value="@{{year.id}}" ng-if="year.isDefault == '1'">@{{year.yearTitle}} - Default Year</option>
             </select>
             <br/>
-            <a class="floatRTL btn btn-success btn-flat pull-right marginBottom15 ng-binding" ng-click="chgAcYear()"><?php echo $panelInit->language['chgYear']; ?></a>
+            <a class="floatRTL btn btn-success btn-flat pull-right marginBottom15 ng-binding" ng-click="chgAcYear()"><?php echo $panelInit->language['chgYear'];?></a>
             <div class="clearfix"></div>
         </div>
     </modal>

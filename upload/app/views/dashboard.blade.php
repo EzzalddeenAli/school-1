@@ -1,1 +1,1 @@
-@extends('Layout')
+@extends('Layout_new')
