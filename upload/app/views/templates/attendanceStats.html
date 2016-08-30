@@ -6,12 +6,12 @@
 
 <section class="content" ng-show="views.list">
 
-  <div class="box col-xs-12">
-    <div class="box-header">
-        <h3 class="box-title">{{phrase.attendanceFilters}}</h3>
+  <div class="panel col-xs-12">
+    <div class="panel-heading">
+        <h3 class="panel-title">{{phrase.attendanceFilters}}</h3>
     </div>
 
-    <div class="box-body table-responsive">
+    <div class="panel-body table-responsive">
       <form class="form-horizontal" ng-submit="statsAttendance()" name="attendance" novalidate>
         <div class="form-group">
           <label for="inputPassword3" class="col-sm-2 control-label">{{phrase.class}}</label>
@@ -62,11 +62,11 @@
 
 <section class="content" ng-show="views.listdata">
   <a ng-click="changeView('list')" class="floatRTL btn btn-danger btn-flat pull-right marginBottom15">{{phrase.Return}}</a>
-  <div class="box col-xs-12">
-    <div class="box-header">
-      <h3 class="box-title">{{phrase.attendanceStats}}</h3>
+  <div class="panel col-xs-12">
+    <div class="panel-heading">
+      <h3 class="panel-title">{{phrase.attendanceStats}}</h3>
     </div>
-    <div class="box-body table-responsive">
+    <div class="panel-body table-responsive">
       <table class="table table-bordered">
           <tbody><tr>
               <th style="width: 10px">#</th>
@@ -96,11 +96,11 @@
 </section>
 
 <section class="content" ng-show="views.lists">
-  <div class="box col-xs-12">
-    <div class="box-header">
-      <h3 class="box-title">{{phrase.attendanceStats}}</h3>
+  <div class="panel col-xs-12">
+    <div class="panel-heading">
+      <h3 class="panel-title">{{phrase.attendanceStats}}</h3>
     </div>
-    <div class="box-body table-responsive">
+    <div class="panel-body table-responsive">
       <table class="table table-bordered">
           <tbody><tr>
               <th>{{phrase.Date}}</th>
@@ -128,11 +128,11 @@
 </section>
 
 <section class="content" ng-show="views.listp">
-  <div ng-repeat="(key, value) in attendanceStats.studentAttendance" class="box col-xs-12">
-    <div class="box-header">
-      <h3 class="box-title">{{value.n.name}}</h3>
+  <div ng-repeat="(key, value) in attendanceStats.studentAttendance" class="panel col-xs-12">
+    <div class="panel-heading">
+      <h3 class="panel-title">{{value.n.name}}</h3>
     </div>
-    <div class="box-body table-responsive">
+    <div class="panel-body table-responsive">
       <table class="table table-bordered">
           <tbody><tr>
               <th>{{phrase.Date}}</th>

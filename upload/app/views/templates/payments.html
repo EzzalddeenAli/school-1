@@ -18,9 +18,9 @@
           <li><a href="payments/export/pdf" target="_BLANK">{{phrase.ExportPDF}}</a></li>
       </ul>
   </div>
-  <div class="box col-xs-12">
-      <div class="box-header">
-          <h3 class="box-title">{{phrase.listPayments}}</h3>
+  <div class="panel col-xs-12">
+      <div class="panel-heading">
+          <h3 class="panel-title">{{phrase.listPayments}}</h3>
           <div class="box-tools">
               <div class="input-group">
                 <input type="text" tooltip title="{{phrase.minCharLength3}}" name="table_search" ng-model="searchText" ng-change="searchDB()" placeholder="{{phrase.Search}}" class="form-control input-sm">
@@ -28,7 +28,7 @@
               </div>
           </div>
       </div>
-      <div class="box-body table-responsive">
+      <div class="panel-body table-responsive">
           <table class="table table-hover">
               <tbody><tr>
                   <th>{{phrase.ID}}</th>
@@ -67,11 +67,11 @@
 
 <section class="content" ng-show="views.add">
   <a ng-click="changeView('list')" class="floatRTL btn btn-danger btn-flat pull-right marginBottom15">{{phrase.cancelAdd}}</a>
-  <div class="box col-xs-12">
-    <div class="box-header">
-        <h3 class="box-title">{{phrase.addPayment}}</h3>
+  <div class="panel col-xs-12">
+    <div class="panel-heading">
+        <h3 class="panel-title">{{phrase.addPayment}}</h3>
     </div>
-    <div class="box-body table-responsive">
+    <div class="panel-body table-responsive">
       <form class="form-horizontal" name="addPayment" role="form" ng-submit="saveAdd()" novalidate>
         <div class="form-group" ng-class="{'has-error': addPayment.paymentTitle.$invalid}">
           <label for="inputEmail3" class="col-sm-2 control-label">{{phrase.paymentTitle}} * </label>
@@ -144,11 +144,11 @@
 
 <section class="content" ng-show="views.edit">
   <a ng-click="changeView('list')" class="floatRTL btn btn-danger btn-flat pull-right marginBottom15">{{phrase.cancelEdit}}</a>
-  <div class="box col-xs-12">
-    <div class="box-header">
-        <h3 class="box-title">{{phrase.editPayment}}</h3>
+  <div class="panel col-xs-12">
+    <div class="panel-heading">
+        <h3 class="panel-title">{{phrase.editPayment}}</h3>
     </div>
-    <div class="box-body table-responsive">
+    <div class="panel-body table-responsive">
       <form class="form-horizontal" name="editPayment" role="form" ng-submit="saveEdit()" novalidate>
         <div class="form-group" ng-class="{'has-error': addPayment.paymentTitle.$invalid}">
           <label for="inputEmail3" class="col-sm-2 control-label">{{phrase.paymentTitle}} * </label>
@@ -203,11 +203,11 @@
 
 <section class="content" ng-show="views.invoice">
   <a ng-click="changeView('list')" class="floatRTL btn btn-danger btn-flat pull-right marginBottom15">{{phrase.Return}}</a>
-  <div class="box col-xs-12">
-    <div class="box-header">
-        <h3 class="box-title">{{phrase.viewInvoice}}</h3>
+  <div class="panel col-xs-12">
+    <div class="panel-heading">
+        <h3 class="panel-title">{{phrase.viewInvoice}}</h3>
     </div>
-    <div class="box-body table-responsive">
+    <div class="panel-body table-responsive">
         <div class="row">
             <div class="col-xs-12">
                 <h2 class="page-header">
@@ -318,11 +318,11 @@
 
 <section class="content" ng-show="views.details">
   <a ng-click="changeView('list')" class="floatRTL btn btn-success btn-flat pull-right marginBottom15">{{phrase.Return}}</a>
-  <div class="box col-xs-12">
-      <div class="box-header">
-          <h3 class="box-title">{{phrase.listPaymentDetail}}</h3>
+  <div class="panel col-xs-12">
+      <div class="panel-heading">
+          <h3 class="panel-title">{{phrase.listPaymentDetail}}</h3>
       </div>
-      <div class="box-body table-responsive">
+      <div class="panel-body table-responsive">
           <table class="table table-hover">
               <tbody>
               <tr ng-repeat="(key, value) in payDetails">
@@ -346,7 +346,7 @@
   </div>
   <div class="row">
     <div class="col-xs-12" style="padding-top:10px;">
-      <div class="box-body table-responsive">
+      <div class="panel-body table-responsive">
         <table class="table table-bordered">
           <tbody>
           <tr ng-repeat="studentOne in searchResults">

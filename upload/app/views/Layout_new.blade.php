@@ -13,7 +13,6 @@
   <link type='text/css' href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400italic,600' rel='stylesheet'>
   <link type="text/css" href="{{URL::asset('assets/new_theme/fonts/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet">        <!-- Font Awesome -->
   <link type="text/css" href="{{URL::asset('assets/new_theme/fonts/themify-icons/themify-icons.css')}}" rel="stylesheet">              <!-- Themify Icons -->
-  <link type="text/css" href="{{URL::asset('assets/new_theme/css/styles.css')}}" rel="stylesheet">                                     <!-- Core CSS with all styles -->
   <link type="text/css" href="{{URL::asset('assets/new_theme/plugins/codeprettifier/prettify.css')}}" rel="stylesheet">                <!-- Code Prettifier -->
   <link type="text/css" href="{{URL::asset('assets/new_theme/plugins/iCheck/skins/minimal/blue.css')}}" rel="stylesheet">              <!-- iCheck -->
     <!--[if lt IE 10]>
@@ -25,9 +24,10 @@
     <link type="text/css" href="{{URL::asset('assets/new_theme/plugins/fullcalendar/fullcalendar.css')}}" rel="stylesheet">             <!-- FullCalendar -->
     <link type="text/css" href="{{URL::asset('assets/new_theme/plugins/jvectormap/jquery-jvectormap-2.0.2.css')}}" rel="stylesheet">      <!-- jVectorMap -->
     <link type="text/css" href="{{URL::asset('assets/new_theme/plugins/switchery/switchery.css')}}" rel="stylesheet">
+  <link type="text/css" href="{{URL::asset('assets/new_theme/css/styles.css')}}" rel="stylesheet">                                     <!-- Core CSS with all styles -->
   </head>
 </head>
-<body class="animated-content">
+<body class="hold-transition <?php echo $panelInit->defTheme;?> sidebar-mini" ng-app="schoex" ng-controller="mainController">
   <header id="topnav" class="navbar navbar-default navbar-fixed-top" role="banner">
     <div class="logo-area">
       <span id="trigger-sidebar" class="toolbar-trigger toolbar-icon-bg">
@@ -262,115 +262,71 @@
                 <nav role="navigation" class="widget-body">
                   <ul class="acc-menu">
                     <li class="nav-separator"><span>Explore</span></li>
-                    <li><a href="index.html"><i class="ti ti-home"></i><span>Dashboard</span><span class="badge badge-teal">2</span></a></li>
-                    <li><a href="angular/app/"><i class="ti ti-shield"></i><span>AngularJS</span></span></a></li>
-                    <li><a href="javascript:;"><i class="ti ti-layout"></i><span>Layout</span></a>
-                      <ul class="acc-menu">
-                        <li><a href="layout-grids.html">Grid Scaffolding</a></li>
-                        <li><a href="layout-static-leftbar.html">Static Sidebar</a></li>
-                        <li><a href="layout-sidebar-scroll.html">Scroll Sidebar</a></li>
-                        <li><a href="layout-horizontal.html">Horizontal Nav</a></li>
-                        <li><a href="layout-boxed.html">Boxed</a></li>
-                      </ul>
-                    </li>
-                    <li><a href="javascript:;"><i class="ti ti-view-list-alt"></i><span>UI Kit</span></a>
-                      <ul class="acc-menu">
-                        <li><a href="ui-typography.html">Typography</a></li>
-                        <li><a href="ui-buttons.html">Buttons</a></li>
-                        <li><a href="ui-modals.html">Modal</a></li>
-                        <li><a href="ui-progress.html">Progress</a></li>
-                        <li><a href="ui-paginations.html">Paginations</a></li>
-                        <li><a href="ui-breadcrumbs.html">Breadcrumbs</a></li>
-                        <li><a href="ui-labelsbadges.html">Labels &amp; Badges</a></li>
-                        <li><a href="ui-alerts.html">Alerts</a></li>
-                        <li><a href="ui-tabs.html">Tabs</a></li>
-                        <li><a href="ui-wells.html">Wells</a></li>
-                        <li><a href="ui-icons-fontawesome.html">FontAwesome Icons</a></li>
-                        <li><a href="ui-icons-themify.html">Themify Icons</a></li>
-                        <li><a href="ui-helpers.html">Helpers</a></li>
-                        <li><a href="ui-imagecarousel.html">Images &amp; Carousel</a></li>
-                      </ul>
-                    </li>
-                    <li><a href="javascript:;"><i class="ti ti-control-shuffle"></i><span>Components</span></a>
-                      <ul class="acc-menu">
-                        <li><a href="ui-tiles.html">Tiles</a></li>
-                        <li><a href="custom-skylo.html">Page Progress</a></li>
-                        <li><a href="custom-bootbox.html">Bootbox</a></li>
-                        <li><a href="custom-pines.html">Pines Notification</a></li>
-                        <li><a href="custom-pulsate.html">Pulsate</a></li>
-                        <li><a href="custom-knob.html">jQuery Knob</a></li>
-                        <li><a href="custom-ionrange.html">Ion Range Slider</a></li>
-                      </ul>
-                    </li>
-                    <li><a href="javascript:;"><i class="ti ti-pencil"></i><span>Forms</span></a>
-                      <ul class="acc-menu">
-                        <li><a href="ui-forms.html">Form Layout</a></li>
-                        <li><a href="form-components.html">Form Components</a></li>
-                        <li><a href="form-pickers.html">Pickers</a></li>
-                        <li><a href="form-wizard.html">Form Wizard</a></li>
-                        <li><a href="form-validation.html">Form Validation</a></li>
-                        <li><a href="form-masks.html">Form Masks</a></li>
-                        <li><a href="form-dropzone.html">Dropzone Uploader</a></li>
-                        <li><a href="form-summernote.html">Summernote</a></li>
-                        <li><a href="form-markdown.html">Markdown Editor</a></li>
-                        <li><a href="form-xeditable.html">Inline Editor</a></li>
-                        <li><a href="form-gridforms.html">Grid Forms</a></li>
-                      </ul>
-                    </li>
-                    <li>
-                      <a href="javascript:;"><i class="ti ti-settings"></i><span>Panels</span></a>
-                      <ul class="acc-menu">
-                        <li><a href="ui-panels.html">Panels</a></li>
-                        <li><a href="ui-advancedpanels.html">Draggable Panels</a></li>
-                      </ul>
-                      <li><a href="javascript:;"><i class="ti ti-layout-grid3"></i><span>Tables</span></a>
-                        <ul class="acc-menu">
-                          <li><a href="ui-tables.html">Basic Tables</a></li>
-                          <li><a href="tables-responsive.html">Responsive Tables</a></li>
-                          <li><a href="tables-editable.html">Editable Tables</a></li>
-                          <li><a href="tables-data.html">Data Tables</a></li>
-                          <li><a href="tables-fixedheader.html">Fixed Header Tables</a></li>
-                        </ul>
-                      </li>
-                      <li><a href="javascript:;"><i class="ti ti-stats-up"></i><span>Analytics</span></a>
-                        <ul class="acc-menu">
-                          <li><a href="charts-flot.html">Flot</a></li>
-                          <li><a href="charts-sparklines.html">Sparklines</a></li>
-                          <li><a href="charts-morris.html">Morris.js</a></li>
-                          <li><a href="charts-easypiechart.html">Easy Pie Chart</a></li>
-                        </ul>
-                      </li>
-                      <li><a href="javascript:;"><i class="ti ti-map-alt"></i><span>Maps</span></a>
-                        <ul class="acc-menu">
-                          <li><a href="maps-google.html">Google Maps</a></li>
-                          <li><a href="maps-jvectormap.html">jVectorMap</a></li>
-                          <li><a href="maps-mapael.html">Mapael</a></li>
-                        </ul>
-                      </li>
-                      <li><a href="javascript:;"><i class="ti ti-file"></i><span>Pages</span></a>
-                        <ul class="acc-menu">
-                          <li><a href="extras-profile.html">Profile</a></li>
-                          <li><a href="extras-invoice.html">Invoice</a></li>
-                          <li><a href="javascript:;">Email Templates</a>
-                            <ul class="acc-menu">
-                              <li><a href="responsive-email/basic.html">Basic</a></li>
-                              <li><a href="responsive-email/hero.html">Hero</a></li>
-                              <li><a href="responsive-email/sidebar.html">Sidebar</a></li>
-                              <li><a href="responsive-email/sidebar-hero.html">Sidebar Hero</a></li>
-                            </ul>
-                          </li>
-                          <li><a href="coming-soon.html">Coming Soon</a></li>
-                          <li><a href="extras-faq.html">FAQ</a></li>
-                          <li><a href="extras-registration.html">Registration</a></li>
-                          <li><a href="extras-forgotpassword.html">Password Reset</a></li>
-                          <li><a href="extras-login.html">Login</a></li>
-                          <li><a href="extras-404.html">404 Page</a></li>
-                          <li><a href="extras-500.html">500 Page</a></li>
-                        </ul>
-                      </li>
-                      <li class="nav-separator"><span>Extras</span></li>
-                      <li><a href="app-inbox.html"><i class="ti ti-email"></i><span>Inbox</span><span class="badge badge-danger">3</span></a></li>
-                      <li><a href="extras-calendar.html"><i class="ti ti-calendar "></i><span>Calendar</span><span class="badge badge-orange">1</span></a></li>
+                                  <?php
+if ($users->role == "admin" AND $users->customPermissionsType == "custom") {
+	$userPerm = $users->customPermissionsAsJson();
+	$performPermScan = true;
+}
+while (list($key, $value) = each($panelInit->panelItems)) {
+	if (isset($value['activated']) AND !strpos($panelInit->settingsArray['activatedModules'], $value['activated'])) {continue;}
+	if (!in_array($users->role, $value['permissions'])) {
+		continue;
+	}
+	if (isset($performPermScan) AND isset($value['cusPerm']) AND $value['cusPerm'] != "") {
+		if (!in_array($value['cusPerm'], $userPerm)) {
+			continue;
+		}
+	}
+	echo "<li ";
+	if (isset($value['children'])) {
+		echo "class='hasChild'";
+	}
+	echo ">";
+	echo "<a ";
+	if (!isset($value['children'])) {
+		echo "class='aj'";
+	}
+	if (isset($value['url'])) {
+		echo " href='" . URL::to($value['url']) . "'";
+	}
+	echo ">";
+	echo "<i class='" . $value['icon'] . "'></i><span>";
+	if (isset($panelInit->language[$value['title']])) {
+		echo $panelInit->language[$value['title']];
+	} else {
+		echo $value['title'];
+	}
+	echo "</span>";
+	echo "</a>";
+	if (isset($value['children'])) {
+		echo '<ul class="acc-menu">';
+		while (list($key2, $value2) = each($value['children'])) {
+			if (isset($value2['activated']) AND !strpos($panelInit->settingsArray['activatedModules'], $value2['activated'])) {continue;}
+			if (!in_array($users->role, $value2['permissions'])) {
+				continue;
+			}
+			if (isset($performPermScan) AND isset($value2['cusPerm']) AND $value2['cusPerm'] != "") {
+				if (!in_array($value2['cusPerm'], $userPerm)) {
+					continue;
+				}
+			}
+			echo "<li>";
+			echo "<a class='aj' href='" . URL::to($value2['url']) . "'>";
+			echo "<i class='" . $value2['icon'] . "'></i> ";
+			if (isset($panelInit->language[$value2['title']])) {
+				echo $panelInit->language[$value2['title']];
+			} else {
+				echo $value2['title'];
+			}
+			echo "</a>";
+			echo "</li>";
+		}
+		echo "</ul>";
+	}
+
+	echo "</li>";
+}
+?>
                     </ul>
                   </nav>
                 </div>
@@ -409,8 +365,7 @@
                   <li class=""><a href="index.html">Home</a></li>
                   <li class="active"><a href="index.html">Dashboard</a></li>
                 </ol>
-                <div class="container-fluid">
-                  <div id='parentDBArea' class="content-wrapper" ng-view></div>
+                <div class="container-fluid" ng-view>
                   <div id='overlay'>
                     <div class="loading">
                       <div class="dot"></div>
@@ -550,6 +505,7 @@
   <div ng-spinner-loader></div>
   <input type="hidden" id="rooturl" value="{{URL::asset('/')}}"/>
   <input type="hidden" id="utilsScript" value="{{URL::asset('assets/js/utils.js')}}"/>
+  <script src="{{URL::asset('assets/js/schoex.js')}}" type="text/javascript"></script>
   <script src="{{URL::asset('assets/js/Angular/angular.min.js')}}" type="text/javascript"></script>
   <script src="{{URL::asset('assets/js/Angular/AngularModules.js')}}" type="text/javascript"></script>
   <script src="{{URL::asset('assets/js/Angular/app.js')}}"></script>

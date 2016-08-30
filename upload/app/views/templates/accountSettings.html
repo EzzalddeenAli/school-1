@@ -5,11 +5,11 @@
 </section>
 
 <section class="content" ng-show="views.profile">
-  <div class="box col-xs-12">
-    <div class="box-header">
-        <h3 class="box-title">{{phrase.ChgProfileData}}</h3>
+  <div class="panel col-xs-12">
+    <div class="panel-heading">
+        <h3 class="panel-title">{{phrase.ChgProfileData}}</h3>
     </div>
-    <div class="box-body table-responsive">
+    <div class="panel-body table-responsive">
       <form class="form-horizontal" name="editDorm" role="form" ng-upload="saveProfile()" method="post" action="{{'accountSettings/profile'}}" novalidate>
         <div class="form-group" ng-class="{'has-error': editDorm.fullName.$invalid}">
           <label for="inputEmail3" class="col-sm-2 control-label">{{phrase.FullName}} * </label>
@@ -107,11 +107,11 @@
 </section>
 
 <section class="content" ng-show="views.email">
-  <div class="box col-xs-12">
-    <div class="box-header">
-        <h3 class="box-title">{{phrase.chgEmailAddress}}</h3>
+  <div class="panel col-xs-12">
+    <div class="panel-heading">
+        <h3 class="panel-title">{{phrase.chgEmailAddress}}</h3>
     </div>
-    <div class="box-body table-responsive">
+    <div class="panel-body table-responsive">
       <form class="form-horizontal" name="editemail" role="form" ng-submit="saveEmail()" method="post" novalidate>
           <div class="form-group" ng-class="{'has-error': editemail.password.$invalid}">
             <label for="inputEmail3" class="col-sm-2 control-label">{{phrase.password}} </label>
@@ -143,11 +143,11 @@
 </section>
 
 <section class="content" ng-show="views.password">
-  <div class="box col-xs-12">
-    <div class="box-header">
-        <h3 class="box-title">{{phrase.chgPassword}}</h3>
+  <div class="panel col-xs-12">
+    <div class="panel-heading">
+        <h3 class="panel-title">{{phrase.chgPassword}}</h3>
     </div>
-    <div class="box-body table-responsive">
+    <div class="panel-body table-responsive">
       <form class="form-horizontal" name="editpassword" role="form" ng-submit="savePassword()" method="post" novalidate>
         <div class="form-group" ng-class="{'has-error': editpassword.password.$invalid}">
           <label for="inputEmail3" class="col-sm-2 control-label">{{phrase.oldPassword}} </label>

@@ -7,9 +7,9 @@
 
 <section class="content" ng-show="views.list">
   <a ng-if="userRole == 'admin' || userRole == 'teacher'" ng-click="changeView('add')" class="floatRTL btn btn-success btn-flat pull-right marginBottom15">{{phrase.AddAssignments}}</a>
-  <div class="box col-xs-12">
-      <div class="box-header">
-          <h3 class="box-title">{{phrase.listAssignments}}</h3>
+  <div class="panel col-xs-12">
+      <div class="panel-heading">
+          <h3 class="panel-title">{{phrase.listAssignments}}</h3>
           <div class="box-tools">
               <div class="input-group">
                 <input type="text" name="table_search" ng-model="searchText" placeholder="{{phrase.Search}}" class="form-control input-sm">
@@ -17,7 +17,7 @@
               </div>
           </div>
       </div>
-      <div class="box-body table-responsive">
+      <div class="panel-body table-responsive">
           <table class="table table-hover">
               <tbody><tr>
                   <th>{{phrase.ID}}</th>
@@ -47,11 +47,11 @@
 
 <section class="content" ng-show="views.add">
   <a ng-click="changeView('list')" class="floatRTL btn btn-danger btn-flat pull-right marginBottom15">{{phrase.cancelAdd}}</a>
-  <div class="box col-xs-12">
-    <div class="box-header">
-        <h3 class="box-title">{{phrase.AddAssignments}}</h3>
+  <div class="panel col-xs-12">
+    <div class="panel-heading">
+        <h3 class="panel-title">{{phrase.AddAssignments}}</h3>
     </div>
-    <div class="box-body table-responsive">
+    <div class="panel-body table-responsive">
       <form class="form-horizontal" name="addDorm" role="form" ng-upload="saveAdd(content)" method="post" action="assignments" novalidate>
         <div class="form-group" ng-class="{'has-error': addDorm.AssignTitle.$invalid}">
           <label for="inputEmail3" class="col-sm-2 control-label">{{phrase.AssignmentTitle}} * </label>
@@ -115,11 +115,11 @@
 
 <section class="content" ng-show="views.edit">
   <a ng-click="changeView('list')" class="floatRTL btn btn-danger btn-flat pull-right marginBottom15">{{phrase.cancelEdit}}</a>
-  <div class="box col-xs-12">
-    <div class="box-header">
-        <h3 class="box-title">{{phrase.editAssignment}}</h3>
+  <div class="panel col-xs-12">
+    <div class="panel-heading">
+        <h3 class="panel-title">{{phrase.editAssignment}}</h3>
     </div>
-    <div class="box-body table-responsive">
+    <div class="panel-body table-responsive">
       <form class="form-horizontal" name="editDorm" role="form"  ng-upload="saveEdit(content)" role="form" method="post" action="{{'assignments/' + form.id}}" novalidate>
         <div class="form-group" ng-class="{'has-error': editDorm.AssignTitle.$invalid}">
           <label for="inputEmail3" class="col-sm-2 control-label">{{phrase.AssignmentTitle}} * </label>
@@ -183,11 +183,11 @@
 
 <section class="content" ng-show="views.upload">
   <a ng-click="changeView('list')" class="floatRTL btn btn-danger btn-flat pull-right marginBottom15">{{phrase.Return}}</a>
-  <div class="box col-xs-12">
-    <div class="box-header">
-        <h3 class="box-title">{{phrase.uploadAnswer}}</h3>
+  <div class="panel col-xs-12">
+    <div class="panel-heading">
+        <h3 class="panel-title">{{phrase.uploadAnswer}}</h3>
     </div>
-    <div class="box-body table-responsive">
+    <div class="panel-body table-responsive">
       <form class="form-horizontal" name="uploadDorm" role="form" ng-upload="saveAnswer(content)" method="post" action="{{'assignments/upload/' + form.assignmentId}}" novalidate>
         <div class="form-group">
           <label for="inputPassword3" class="col-sm-2 control-label">{{phrase.userNotes}}</label>
@@ -214,9 +214,9 @@
 
 <section class="content" ng-show="views.answers">
   <a ng-click="changeView('list')" class="floatRTL btn btn-success btn-flat pull-right marginBottom15">{{phrase.Return}}</a>
-  <div class="box col-xs-12">
-      <div class="box-header">
-          <h3 class="box-title">{{phrase.viewAnswers}}</h3>
+  <div class="panel col-xs-12">
+      <div class="panel-heading">
+          <h3 class="panel-title">{{phrase.viewAnswers}}</h3>
           <div class="box-tools">
               <div class="input-group">
                 <input type="text" name="table_search" ng-model="searchText" placeholder="{{phrase.Search}}" class="form-control input-sm">
@@ -224,7 +224,7 @@
               </div>
           </div>
       </div>
-      <div class="box-body table-responsive">
+      <div class="panel-body table-responsive">
           <table class="table table-hover">
               <tbody><tr>
                   <th>{{phrase.studentName}}</th>

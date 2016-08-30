@@ -7,9 +7,9 @@
 
 <section class="content" ng-show="views.list">
   <a ng-if="userRole == 'admin' || userRole == 'teacher'" ng-click="changeView('add')" class="floatRTL btn btn-success btn-flat pull-right marginBottom15">{{phrase.addExam}}</a>
-  <div class="box col-xs-12">
-      <div class="box-header">
-          <h3 class="box-title">{{phrase.listExams}}</h3>
+  <div class="panel col-xs-12">
+      <div class="panel-heading">
+          <h3 class="panel-title">{{phrase.listExams}}</h3>
           <div class="box-tools">
               <div class="input-group">
                 <input type="text" name="table_search" ng-model="searchText" placeholder="{{phrase.Search}}" class="form-control input-sm">
@@ -17,7 +17,7 @@
               </div>
           </div>
       </div>
-      <div class="box-body table-responsive">
+      <div class="panel-body table-responsive">
           <table class="table table-hover">
               <tbody><tr>
                   <th>{{phrase.ID}}</th>
@@ -46,11 +46,11 @@
 
 <section class="content" ng-show="views.add">
   <a ng-click="changeView('list')" class="floatRTL btn btn-danger btn-flat pull-right marginBottom15">{{phrase.cancelAdd}}</a>
-  <div class="box col-xs-12">
-    <div class="box-header">
-        <h3 class="box-title">{{phrase.addExam}}</h3>
+  <div class="panel col-xs-12">
+    <div class="panel-heading">
+        <h3 class="panel-title">{{phrase.addExam}}</h3>
     </div>
-    <div class="box-body table-responsive">
+    <div class="panel-body table-responsive">
       <form class="form-horizontal" name="addExam" role="form" ng-submit="saveAdd()" novalidate>
         <div class="form-group" ng-class="{'has-error': addExam.examTitle.$invalid}">
           <label for="inputEmail3" class="col-sm-2 control-label">{{phrase.examName}} * </label>
@@ -123,7 +123,7 @@
           <label for="inputEmail3" class="col-sm-2 control-label">{{phrase.Questions}}</label>
           <div class="col-sm-10">
 
-              <div class="box-body table-responsive">
+              <div class="panel-body table-responsive">
                 <div class="form-group">
                   <label for="inputEmail3" class="col-sm-1 control-label">{{phrase.Question}}</label>
                   <div class="col-sm-11">
@@ -198,14 +198,14 @@
 
               <div class="row">
                 <div class="col-md-4" ng-repeat="question in form.examQuestion">
-                  <div class="box box-info" ng-show="!question.type || question.type == 'radio'">
-                    <div class="box-header">
-                        <h3 class="box-title">{{phrase.infoBox}}</h3>
+                  <div class="panel box-info" ng-show="!question.type || question.type == 'radio'">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">{{phrase.infoBox}}</h3>
                         <div class="box-tools pull-right">
                           <a href="" ng-click="removeQuestion(question,$index)" class="label bg-aqua">{{phrase.Remove}}</a>
                         </div>
                     </div>
-                    <div class="box-body">
+                    <div class="panel-body">
                       <div class="form-group" ng-class="{'has-error': addExam.AssignTitle.$invalid}">
                         <label class="col-sm-12">{{phrase.Question}}</label>
                         <div class="col-sm-12"> {{question.title}} </div>
@@ -229,14 +229,14 @@
                       </div>
                     </div>
                   </div>
-                  <div class="box box-info" ng-show="question.type == 'check'">
-                    <div class="box-header">
-                        <h3 class="box-title">{{phrase.infoBox}}</h3>
+                  <div class="panel box-info" ng-show="question.type == 'check'">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">{{phrase.infoBox}}</h3>
                         <div class="box-tools pull-right">
                           <a href="" ng-click="removeQuestion(question,$index)" class="label bg-aqua">{{phrase.Remove}}</a>
                         </div>
                     </div>
-                    <div class="box-body">
+                    <div class="panel-body">
                       <div class="form-group">
                         <label class="col-sm-12">{{phrase.Question}}</label>
                         <div class="col-sm-12"> {{question.title}} </div>
@@ -260,14 +260,14 @@
                       </div>
                     </div>
                   </div>
-                  <div class="box box-info" ng-show="question.type == 'text'">
-                    <div class="box-header">
-                        <h3 class="box-title">{{phrase.infoBox}}</h3>
+                  <div class="panel box-info" ng-show="question.type == 'text'">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">{{phrase.infoBox}}</h3>
                         <div class="box-tools pull-right">
                           <a href="" ng-click="removeQuestion(question,$index)" class="label bg-aqua">{{phrase.Remove}}</a>
                         </div>
                     </div>
-                    <div class="box-body">
+                    <div class="panel-body">
                       <div class="form-group">
                         <label class="col-sm-12">{{phrase.Question}}</label>
                         <div class="col-sm-12"> {{question.title}} </div>
@@ -306,11 +306,11 @@
 
 <section class="content" ng-show="views.edit">
   <a ng-click="changeView('list')" class="floatRTL btn btn-danger btn-flat pull-right marginBottom15">{{phrase.cancelEdit}}</a>
-  <div class="box col-xs-12">
-    <div class="box-header">
-        <h3 class="box-title">{{phrase.editExam}}</h3>
+  <div class="panel col-xs-12">
+    <div class="panel-heading">
+        <h3 class="panel-title">{{phrase.editExam}}</h3>
     </div>
-    <div class="box-body table-responsive">
+    <div class="panel-body table-responsive">
       <form class="form-horizontal" name="editExam" role="form" ng-submit="saveEdit()" novalidate>
         <div class="form-group" ng-class="{'has-error': editExam.examTitle.$invalid}">
           <label for="inputEmail3" class="col-sm-2 control-label">{{phrase.examName}} * </label>
@@ -383,7 +383,7 @@
           <label for="inputEmail3" class="col-sm-2 control-label">{{phrase.Questions}}</label>
           <div class="col-sm-10">
 
-            <div class="box-body table-responsive">
+            <div class="panel-body table-responsive">
               <div class="form-group">
                 <label for="inputEmail3" class="col-sm-1 control-label">{{phrase.Question}}</label>
                 <div class="col-sm-11">
@@ -458,14 +458,14 @@
 
             <div class="row">
               <div class="col-md-4" ng-repeat="question in form.examQuestion">
-                <div class="box box-info" ng-show="!question.type || question.type == 'radio'">
-                  <div class="box-header">
-                      <h3 class="box-title">{{phrase.infoBox}}</h3>
+                <div class="panel box-info" ng-show="!question.type || question.type == 'radio'">
+                  <div class="panel-heading">
+                      <h3 class="panel-title">{{phrase.infoBox}}</h3>
                       <div class="box-tools pull-right">
                         <a href="" ng-click="removeQuestion(question,$index)" class="label bg-aqua">{{phrase.Remove}}</a>
                       </div>
                   </div>
-                  <div class="box-body">
+                  <div class="panel-body">
                     <div class="form-group" ng-class="{'has-error': editExam.AssignTitle.$invalid}">
                       <label class="col-sm-12">{{phrase.Question}}</label>
                       <div class="col-sm-12"> {{question.title}} </div>
@@ -489,14 +489,14 @@
                     </div>
                   </div>
                 </div>
-                <div class="box box-info" ng-show="question.type == 'check'">
-                  <div class="box-header">
-                      <h3 class="box-title">{{phrase.infoBox}}</h3>
+                <div class="panel box-info" ng-show="question.type == 'check'">
+                  <div class="panel-heading">
+                      <h3 class="panel-title">{{phrase.infoBox}}</h3>
                       <div class="box-tools pull-right">
                         <a href="" ng-click="removeQuestion(question,$index)" class="label bg-aqua">{{phrase.Remove}}</a>
                       </div>
                   </div>
-                  <div class="box-body">
+                  <div class="panel-body">
                     <div class="form-group">
                       <label class="col-sm-12">{{phrase.Question}}</label>
                       <div class="col-sm-12"> {{question.title}} </div>
@@ -520,14 +520,14 @@
                     </div>
                   </div>
                 </div>
-                <div class="box box-info" ng-show="question.type == 'text'">
-                  <div class="box-header">
-                      <h3 class="box-title">{{phrase.infoBox}}</h3>
+                <div class="panel box-info" ng-show="question.type == 'text'">
+                  <div class="panel-heading">
+                      <h3 class="panel-title">{{phrase.infoBox}}</h3>
                       <div class="box-tools pull-right">
                         <a href="" ng-click="removeQuestion(question,$index)" class="label bg-aqua">{{phrase.Remove}}</a>
                       </div>
                   </div>
-                  <div class="box-body">
+                  <div class="panel-body">
                     <div class="form-group">
                       <label class="col-sm-12">{{phrase.Question}}</label>
                       <div class="col-sm-12"> {{question.title}} </div>
@@ -566,22 +566,22 @@
 
 
 <section class="content" ng-show="views.take">
-  <div class="box col-xs-12">
-    <div class="box-header">
-        <h3 class="box-title">{{phrase.takeExam}} : {{takeData.examTitle}} [{{takeData.examDescription}}]</h3>
+  <div class="panel col-xs-12">
+    <div class="panel-heading">
+        <h3 class="panel-title">{{phrase.takeExam}} : {{takeData.examTitle}} [{{takeData.examDescription}}]</h3>
         <timer autostart="false" ng-if="takeData.timeLeft != '0'" id="onlineExamTimer" countdown="1000" interval="1000" finish-callback="finishExam()">Time Remaining : {{hours}}:{{minutes}}:{{seconds}}</timer>
     </div>
-    <div class="box-body table-responsive">
+    <div class="panel-body table-responsive">
 
       <form class="form-horizontal" name="takeQuestions" role="form" ng-submit="submitExam()" novalidate>
 
         <div class="row">
           <div class="col-md-12" ng-repeat="question in takeData.examQuestion">
-            <div class="box box-info" >
-              <div class="box-header">
-                  <h3 class="box-title">{{question.title}}</h3>
+            <div class="panel box-info" >
+              <div class="panel-heading">
+                  <h3 class="panel-title">{{question.title}}</h3>
               </div>
-              <div class="box-body">
+              <div class="panel-body">
                 <div class="form-group">
                   <div class="col-sm-12" ng-show="!question.type || question.type == 'radio'">
                     <div class="radio" ng-show="question.ans1">
@@ -661,9 +661,9 @@
           <li><a href="onlineExams/export/{{marksExam}}/pdf" target="_BLANK">{{phrase.ExportPDF}}</a></li>
       </ul>
   </div>
-  <div class="box col-xs-12">
-      <div class="box-header">
-          <h3 class="box-title">{{phrase.listMarks}}</h3>
+  <div class="panel col-xs-12">
+      <div class="panel-heading">
+          <h3 class="panel-title">{{phrase.listMarks}}</h3>
           <div class="box-tools">
               <div class="input-group">
                 <input type="text" name="table_search" ng-model="searchText" placeholder="{{phrase.Search}}" class="form-control input-sm">
@@ -671,7 +671,7 @@
               </div>
           </div>
       </div>
-      <div class="box-body table-responsive">
+      <div class="panel-body table-responsive">
           <table class="table table-hover">
               <tbody><tr>
                   <th>{{phrase.studentName}}</th>

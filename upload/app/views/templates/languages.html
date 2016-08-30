@@ -6,9 +6,9 @@
 
 <section class="content" ng-show="views.list">
   <a ng-click="changeView('add')" class="floatRTL btn btn-success btn-flat pull-right marginBottom15">{{phrase.addLanguage}}</a>
-  <div class="box col-xs-12">
-      <div class="box-header">
-          <h3 class="box-title">{{phrase.listLanguage}}</h3>
+  <div class="panel col-xs-12">
+      <div class="panel-heading">
+          <h3 class="panel-title">{{phrase.listLanguage}}</h3>
           <div class="box-tools">
               <div class="input-group">
                 <input type="text" name="table_search" ng-model="searchText" placeholder="{{phrase.Search}}" class="form-control input-sm">
@@ -16,7 +16,7 @@
               </div>
           </div>
       </div>
-      <div class="box-body table-responsive">
+      <div class="panel-body table-responsive">
           <table class="table table-hover">
               <tbody><tr>
                   <th>{{phrase.ID}}</th>
@@ -39,11 +39,11 @@
 
 <section class="content" ng-show="views.add">
 <a ng-click="changeView('list')" class="floatRTL btn btn-danger btn-flat pull-right marginBottom15">{{phrase.cancelAdd}}</a>
-  <div class="box col-xs-12">
-    <div class="box-header">
-        <h3 class="box-title">{{phrase.addLanguage}}</h3>
+  <div class="panel col-xs-12">
+    <div class="panel-heading">
+        <h3 class="panel-title">{{phrase.addLanguage}}</h3>
     </div>
-    <div class="box-body table-responsive">
+    <div class="panel-body table-responsive">
       <form class="form-horizontal" name="addLang" role="form" ng-submit="saveAdd()" novalidate>
         <div class="form-group" ng-class="{'has-error': addLang.languageTitle.$invalid}">
           <label for="inputEmail3" class="col-sm-2 control-label">{{phrase.languageName}} * </label>
@@ -522,7 +522,7 @@
               <label class="col-sm-4">Answers <br/><input type="text" name="languagePhrases" ng-model="form.languagePhrases.Answers"> </label>
               <label class="col-sm-4">True Answer <br/><input type="text" name="languagePhrases" ng-model="form.languagePhrases.trueAns"> </label>
               <label class="col-sm-4">Add question <br/><input type="text" name="languagePhrases" ng-model="form.languagePhrases.addQuestion"> </label>
-              <label class="col-sm-4">Info Box <br/><input type="text" name="languagePhrases" ng-model="form.languagePhrases.infoBox"> </label>
+              <label class="col-sm-4">Info panel <br/><input type="text" name="languagePhrases" ng-model="form.languagePhrases.infoBox"> </label>
               <label class="col-sm-4">Edit Exam <br/><input type="text" name="languagePhrases" ng-model="form.languagePhrases.editExam"> </label>
               <label class="col-sm-4">Submit answers <br/><input type="text" name="languagePhrases" ng-model="form.languagePhrases.submitAnswers"> </label>
               <label class="col-sm-4">Grade <br/><input type="text" name="languagePhrases" ng-model="form.languagePhrases.Grade"> </label>
@@ -1001,11 +1001,11 @@
 
 <section class="content" ng-show="views.edit">
   <a ng-click="changeView('list')" class="floatRTL btn btn-danger btn-flat pull-right marginBottom15">{{phrase.cancelEdit}}</a>
-  <div class="box col-xs-12">
-    <div class="box-header">
-        <h3 class="box-title">{{phrase.editLanguage}}</h3>
+  <div class="panel col-xs-12">
+    <div class="panel-heading">
+        <h3 class="panel-title">{{phrase.editLanguage}}</h3>
     </div>
-    <div class="box-body table-responsive">
+    <div class="panel-body table-responsive">
       <form class="form-horizontal" name="editLang" role="form" ng-submit="saveEdit()" novalidate>
         <div class="form-group" ng-class="{'has-error': editLang.languageTitle.$invalid}">
           <label for="inputEmail3" class="col-sm-2 control-label">{{phrase.languageName}} * </label>
@@ -1484,7 +1484,7 @@
               <label class="col-sm-4">Answers <br/><input type="text" name="languagePhrases" ng-model="form.languagePhrases.Answers"> </label>
               <label class="col-sm-4">True Answer <br/><input type="text" name="languagePhrases" ng-model="form.languagePhrases.trueAns"> </label>
               <label class="col-sm-4">Add question <br/><input type="text" name="languagePhrases" ng-model="form.languagePhrases.addQuestion"> </label>
-              <label class="col-sm-4">Info Box <br/><input type="text" name="languagePhrases" ng-model="form.languagePhrases.infoBox"> </label>
+              <label class="col-sm-4">Info panel <br/><input type="text" name="languagePhrases" ng-model="form.languagePhrases.infoBox"> </label>
               <label class="col-sm-4">Edit Exam <br/><input type="text" name="languagePhrases" ng-model="form.languagePhrases.editExam"> </label>
               <label class="col-sm-4">Submit answers <br/><input type="text" name="languagePhrases" ng-model="form.languagePhrases.submitAnswers"> </label>
               <label class="col-sm-4">Grade <br/><input type="text" name="languagePhrases" ng-model="form.languagePhrases.Grade"> </label>

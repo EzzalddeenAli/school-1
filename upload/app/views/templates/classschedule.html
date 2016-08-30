@@ -6,9 +6,9 @@
 
 
 <section class="content" ng-show="views.list">
-  <div class="box col-xs-12">
-      <div class="box-header">
-          <h3 class="box-title">{{phrase.classEditSch}}</h3>
+  <div class="panel col-xs-12">
+      <div class="panel-heading">
+          <h3 class="panel-title">{{phrase.classEditSch}}</h3>
           <div class="box-tools">
               <div class="input-group">
                 <input type="text" name="table_search" ng-model="searchText" placeholder="{{phrase.Search}}" class="form-control input-sm">
@@ -16,7 +16,7 @@
               </div>
           </div>
       </div>
-      <div class="box-body table-responsive">
+      <div class="panel-body table-responsive">
           <table class="table table-hover">
               <tbody><tr>
                   <th>{{phrase.ID}}</th>
@@ -39,11 +39,11 @@
 <section class="content" ng-show="views.edit">
   <a ng-click="changeView('list')" class="floatRTL btn btn-danger btn-flat pull-right marginBottom15">{{phrase.Return}}</a>
   <a href="javascript:window.print()" class="floatRTL btn btn-success btn-flat pull-right marginBottom15">{{phrase.Print}}</a>
-  <div class="box col-xs-12">
-    <div class="box-header">
-        <h3 class="box-title">{{phrase.editClassSch}}</h3>
+  <div class="panel col-xs-12">
+    <div class="panel-heading">
+        <h3 class="panel-title">{{phrase.editClassSch}}</h3>
     </div>
-    <div class="box-body table-responsive">
+    <div class="panel-body table-responsive">
       <form class="form-horizontal" name="editDorm" role="form" ng-submit="saveEdit()" novalidate>
         <table class="table table-bordered table-hover">
           <tbody>

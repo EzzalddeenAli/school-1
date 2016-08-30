@@ -9,64 +9,64 @@
     <br/><br/>
     <div class="row">
         <div class="col-md-3 col-sm-6 col-xs-12">
-          <div class="info-box bg-aqua reportsDiv" ng-click="usersStats()">
+          <div class="info-panel bg-aqua reportsDiv" ng-click="usersStats()">
             <span class="info-box-icon"><i class="fa fa-dashboard"></i></span>
             <div class="info-box-content">
               <span class="progress-description">{{phrase.UsersStats}}</span>
             </div><!-- /.info-box-content -->
-          </div><!-- /.info-box -->
+          </div><!-- /.info-panel -->
         </div>
         <div class="col-md-3 col-sm-6 col-xs-12">
-          <div class="info-box bg-green reportsDiv" ng-click="stdAttendance()">
+          <div class="info-panel bg-green reportsDiv" ng-click="stdAttendance()">
             <span class="info-box-icon"><i class="fa fa-bar-chart"></i></span>
             <div class="info-box-content">
               <span class="progress-description">{{phrase.studentAttendance}}</span>
             </div><!-- /.info-box-content -->
-          </div><!-- /.info-box -->
+          </div><!-- /.info-panel -->
         </div>
         <div class="col-md-3 col-sm-6 col-xs-12">
-          <div class="info-box bg-yellow reportsDiv" ng-click="changeView('stfAttendance')">
+          <div class="info-panel bg-yellow reportsDiv" ng-click="changeView('stfAttendance')">
             <span class="info-box-icon"><i class="fa fa-check"></i></span>
             <div class="info-box-content">
               <span class="progress-description">{{phrase.staffAttendance}}</span>
             </div><!-- /.info-box-content -->
-          </div><!-- /.info-box -->
+          </div><!-- /.info-panel -->
         </div>
         <div class="col-md-3 col-sm-6 col-xs-12">
-          <div class="info-box bg-red reportsDiv" ng-click="changeView('paymentsReports')">
+          <div class="info-panel bg-red reportsDiv" ng-click="changeView('paymentsReports')">
             <span class="info-box-icon"><i class="fa fa-check"></i></span>
             <div class="info-box-content">
               <span class="progress-description">{{phrase.paymentsReports}}</span>
             </div><!-- /.info-box-content -->
-          </div><!-- /.info-box -->
+          </div><!-- /.info-panel -->
         </div>
     </div>
 
     <br/><br/>
     <div class="row">
         <div class="col-md-3 col-sm-6 col-xs-12">
-          <div class="info-box bg-green reportsDiv" ng-click="changeView('stVacation')">
+          <div class="info-panel bg-green reportsDiv" ng-click="changeView('stVacation')">
             <span class="info-box-icon"><i class="fa fa-coffee"></i></span>
             <div class="info-box-content">
               <span class="progress-description">{{phrase.studentVacation}}</span>
             </div><!-- /.info-box-content -->
-          </div><!-- /.info-box -->
+          </div><!-- /.info-panel -->
         </div>
         <div class="col-md-3 col-sm-6 col-xs-12">
-          <div class="info-box bg-yellow reportsDiv" ng-click="changeView('teacherVacation')">
+          <div class="info-panel bg-yellow reportsDiv" ng-click="changeView('teacherVacation')">
             <span class="info-box-icon"><i class="fa fa-coffee"></i></span>
             <div class="info-box-content">
               <span class="progress-description">{{phrase.teacherVacation}}</span>
             </div><!-- /.info-box-content -->
-          </div><!-- /.info-box -->
+          </div><!-- /.info-panel -->
         </div>
         <div class="col-md-3 col-sm-6 col-xs-12">
-          <div class="info-box bg-aqua reportsDiv" ng-click="marksheetGenerationPrepare()">
+          <div class="info-panel bg-aqua reportsDiv" ng-click="marksheetGenerationPrepare()">
             <span class="info-box-icon"><i class="fa fa-table"></i></span>
             <div class="info-box-content">
               <span class="progress-description">{{phrase.marksheetGen}}</span>
             </div><!-- /.info-box-content -->
-          </div><!-- /.info-box -->
+          </div><!-- /.info-panel -->
         </div>
 
     </div>
@@ -75,11 +75,11 @@
 
 <section class="content" ng-show="views.usersStats">
   <a ng-click="changeView('list')" class="floatRTL btn btn-danger btn-flat pull-right marginBottom15">{{phrase.Return}}</a>
-  <div class="box col-xs-12">
-      <div class="box-header">
-          <h3 class="box-title">{{phrase.UsersStats}}</h3>
+  <div class="panel col-xs-12">
+      <div class="panel-heading">
+          <h3 class="panel-title">{{phrase.UsersStats}}</h3>
       </div>
-      <div class="box-body table-responsive">
+      <div class="panel-body table-responsive">
           <table class="table table-bordered">
               <tbody><tr>
                   <th>{{phrase.user}}</th>
@@ -119,11 +119,11 @@
 
 <section class="content" ng-show="views.stdAttendance">
   <a ng-click="changeView('list')" class="floatRTL btn btn-danger btn-flat pull-right marginBottom15">{{phrase.Return}}</a>
-  <div class="box col-xs-12">
-      <div class="box-header">
-          <h3 class="box-title">{{phrase.studentAttendance}}</h3>
+  <div class="panel col-xs-12">
+      <div class="panel-heading">
+          <h3 class="panel-title">{{phrase.studentAttendance}}</h3>
       </div>
-      <div class="box-body table-responsive">
+      <div class="panel-body table-responsive">
           <form class="form-horizontal" ng-submit="statsAttendance()" name="attendance" novalidate>
             <div class="form-group">
               <label for="inputPassword3" class="col-sm-2 control-label">{{phrase.class}}</label>
@@ -198,11 +198,11 @@
          <li><a ng-click="statsAttendanceExport('pdf')" target="_BLANK">{{phrase.ExportPDF}}</a></li>
      </ul>
  </div>
- <div class="box col-xs-12">
-    <div class="box-header">
-      <h3 class="box-title">{{phrase.attendanceStats}}</h3>
+ <div class="panel col-xs-12">
+    <div class="panel-heading">
+      <h3 class="panel-title">{{phrase.attendanceStats}}</h3>
     </div>
-    <div class="box-body table-responsive">
+    <div class="panel-body table-responsive">
       <table class="table table-bordered">
           <tbody><tr>
               <th style="width: 10px">#</th>
@@ -234,11 +234,11 @@
 
 <section class="content" ng-show="views.stfAttendance">
   <a ng-click="changeView('list')" class="floatRTL btn btn-danger btn-flat pull-right marginBottom15">{{phrase.Return}}</a>
-  <div class="box col-xs-12">
-      <div class="box-header">
-          <h3 class="box-title">{{phrase.staffAttendance}}</h3>
+  <div class="panel col-xs-12">
+      <div class="panel-heading">
+          <h3 class="panel-title">{{phrase.staffAttendance}}</h3>
       </div>
-      <div class="box-body table-responsive">
+      <div class="panel-body table-responsive">
           <form class="form-horizontal" ng-submit="staffAttendance()" name="attendance" novalidate>
             <div class="form-group" ng-class="{'has-error': attendance.attendanceDayFrom.$invalid}">
               <label for="inputPassword3" class="col-sm-2 control-label">{{phrase.from}}</label>
@@ -288,11 +288,11 @@
          <li><a ng-click="staffAttendanceExport('pdf')" target="_BLANK">{{phrase.ExportPDF}}</a></li>
      </ul>
  </div>
-  <div class="box col-xs-12">
-    <div class="box-header">
-      <h3 class="box-title">{{phrase.attendanceStats}}</h3>
+  <div class="panel col-xs-12">
+    <div class="panel-heading">
+      <h3 class="panel-title">{{phrase.attendanceStats}}</h3>
     </div>
-    <div class="box-body table-responsive">
+    <div class="panel-body table-responsive">
       <table class="table table-bordered">
           <tbody><tr>
               <th>{{phrase.Date}}</th>
@@ -319,11 +319,11 @@
 
 <section class="content" ng-show="views.stVacation">
  <a ng-click="changeView('list')" class="floatRTL btn btn-danger btn-flat pull-right marginBottom15">{{phrase.Return}}</a>
- <div class="box col-xs-12">
-   <div class="box-header">
-       <h3 class="box-title">{{phrase.studentVacation}}</h3>
+ <div class="panel col-xs-12">
+   <div class="panel-heading">
+       <h3 class="panel-title">{{phrase.studentVacation}}</h3>
    </div>
-   <div class="box-body table-responsive">
+   <div class="panel-body table-responsive">
      <form class="form-horizontal" ng-submit="getVacation()" name="vacation" novalidate>
        <div class="form-group" style="z-index: 999999999;" ng-class="{'has-error': vacation.fromDate.$invalid}">
          <label for="inputPassword3" class="col-sm-2 control-label">{{phrase.from}} *</label>
@@ -350,11 +350,11 @@
 
 <section class="content" ng-show="views.teacherVacation">
  <a ng-click="changeView('list')" class="floatRTL btn btn-danger btn-flat pull-right marginBottom15">{{phrase.Return}}</a>
- <div class="box col-xs-12">
-   <div class="box-header">
-       <h3 class="box-title">{{phrase.teacherVacation}}</h3>
+ <div class="panel col-xs-12">
+   <div class="panel-heading">
+       <h3 class="panel-title">{{phrase.teacherVacation}}</h3>
    </div>
-   <div class="box-body table-responsive">
+   <div class="panel-body table-responsive">
      <form class="form-horizontal" ng-submit="gettVacation()" name="tvacation" novalidate>
        <div class="form-group" style="z-index: 999999999;" ng-class="{'has-error': tvacation.fromDate.$invalid}">
          <label for="inputPassword3" class="col-sm-2 control-label">{{phrase.from}} *</label>
@@ -381,11 +381,11 @@
 
 <section class="content" ng-show="views.vacationList">
   <a ng-click="changeView('list')" class="floatRTL btn btn-danger btn-flat pull-right marginBottom15">{{phrase.Return}}</a>
-  <div class="box col-xs-12">
-    <div class="box-header">
-      <h3 class="box-title">{{phrase.vacationList}}</h3>
+  <div class="panel col-xs-12">
+    <div class="panel-heading">
+      <h3 class="panel-title">{{phrase.vacationList}}</h3>
     </div>
-    <div class="box-body table-responsive">
+    <div class="panel-body table-responsive">
       <table class="table table-bordered">
           <tbody><tr>
               <th>{{phrase.user}}</th>
@@ -410,11 +410,11 @@
 
 <section class="content" ng-show="views.paymentsReports">
     <a ng-click="changeView('list')" class="floatRTL btn btn-danger btn-flat pull-right marginBottom15">{{phrase.Return}}</a>
-    <div class="box col-xs-12">
-      <div class="box-header">
-          <h3 class="box-title">{{phrase.paymentsReports}}</h3>
+    <div class="panel col-xs-12">
+      <div class="panel-heading">
+          <h3 class="panel-title">{{phrase.paymentsReports}}</h3>
       </div>
-      <div class="box-body table-responsive">
+      <div class="panel-body table-responsive">
         <form class="form-horizontal" ng-submit="getPayments()" name="payments" novalidate>
           <div class="form-group" style="z-index: 999999999;" ng-class="{'has-error': payments.fromDate.$invalid}">
             <label for="inputPassword3" class="col-sm-2 control-label">{{phrase.from}} *</label>
@@ -451,11 +451,11 @@
 
 <section class="content" ng-show="views.paymentsResult">
   <a ng-click="changeView('list')" class="floatRTL btn btn-danger btn-flat pull-right marginBottom15">{{phrase.Return}}</a>
-  <div class="box col-xs-12">
-      <div class="box-header">
-          <h3 class="box-title">{{phrase.listPayments}}</h3>
+  <div class="panel col-xs-12">
+      <div class="panel-heading">
+          <h3 class="panel-title">{{phrase.listPayments}}</h3>
       </div>
-      <div class="box-body table-responsive">
+      <div class="panel-body table-responsive">
           <table class="table table-hover">
               <tbody><tr>
                   <th>{{phrase.ID}}</th>
@@ -487,11 +487,11 @@
 
 <section class="content" ng-show="views.marksheetGeneration">
   <a ng-click="changeView('list')" class="floatRTL btn btn-danger btn-flat pull-right marginBottom15">{{phrase.Return}}</a>
-  <div class="box col-xs-12">
-      <div class="box-header">
-          <h3 class="box-title">Marksheet Generation</h3>
+  <div class="panel col-xs-12">
+      <div class="panel-heading">
+          <h3 class="panel-title">Marksheet Generation</h3>
       </div>
-      <div class="box-body table-responsive">
+      <div class="panel-body table-responsive">
           <form class="form-horizontal" target="_blank" name="marksheetGeneration" method="POST" action="students/printbulk/marksheet" novalidate>
             <div class="form-group" ng-class="{'has-error': marksheetGeneration.classId.$invalid}">
               <label for="inputPassword3" class="col-sm-2 control-label">{{phrase.class}}</label>

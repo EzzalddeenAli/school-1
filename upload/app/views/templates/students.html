@@ -29,9 +29,9 @@
       </ul>
   </div>
   <a ng-if="userRole == 'admin'" href="javascript:window.print()" class="btn btn-success btn-flat pull-right marginBottom15 no-print">{{phrase.Print}}</a>
-  <div class="box col-xs-12">
-      <div class="box-header">
-          <h3 class="box-title">{{phrase.listStudents}}</h3>
+  <div class="panel col-xs-12">
+      <div class="panel-heading">
+          <h3 class="panel-title">{{phrase.listStudents}}</h3>
           <div class="box-tools">
               <div class="input-group">
                   <input type="text" tooltip title="{{phrase.minCharLength3}}" name="table_search" ng-model="searchText" ng-change="searchDB()" placeholder="{{phrase.Search}}" class="form-control input-sm">
@@ -45,7 +45,7 @@
               </div>
           </div>
       </div>
-      <div class="box-body table-responsive">
+      <div class="panel-body table-responsive">
           <table class="table table-hover">
               <tbody><tr>
                   <th>{{phrase.ID}}</th>
@@ -84,20 +84,20 @@
   <h3> {{phrase.Marksheet}}</h3>
   <a ng-hide="isStudent" ng-click="changeView('list')" class="floatRTL btn btn-success btn-flat pull-right marginBottom15">{{phrase.Return}}</a>
 
-  <div ng-show="noMarksheet" class="box col-xs-12">
-    <div class="box-header">
-        <h3 class="box-title">{{phrase.Marksheet}}</h3>
+  <div ng-show="noMarksheet" class="panel col-xs-12">
+    <div class="panel-heading">
+        <h3 class="panel-title">{{phrase.Marksheet}}</h3>
     </div>
-    <div class="box-body table-responsive">
+    <div class="panel-body table-responsive">
       {{phrase.studentHaveNoMarks}}
     </div>
   </div>
 
-  <div class="box col-xs-12" ng-repeat="exam in studentMarksheet">
-      <div class="box-header">
-          <h3 class="box-title">{{exam.title}}</h3>
+  <div class="panel col-xs-12" ng-repeat="exam in studentMarksheet">
+      <div class="panel-heading">
+          <h3 class="panel-title">{{exam.title}}</h3>
       </div>
-      <div class="box-body table-responsive">
+      <div class="panel-body table-responsive">
           <table class="table table-bordered table-hover">
               <tbody><tr>
                   <th>{{phrase.Subject}}</th>
@@ -130,9 +130,9 @@
 
 <section class="content" ng-show="views.approval">
   <a ng-click="changeView('list')" class="floatRTL btn btn-success btn-flat pull-right marginBottom15">{{phrase.Return}}</a>
-  <div class="box col-xs-12">
-      <div class="box-header">
-          <h3 class="box-title">{{phrase.waitingApproval}}</h3>
+  <div class="panel col-xs-12">
+      <div class="panel-heading">
+          <h3 class="panel-title">{{phrase.waitingApproval}}</h3>
           <div class="box-tools">
               <div class="input-group pull-right">
                   <select class="form-control input-sm pull-right" ng-model="searchText.studentClass" style="width:150px;" >
@@ -143,7 +143,7 @@
               </div>
           </div>
       </div>
-      <div class="box-body table-responsive">
+      <div class="panel-body table-responsive">
           <table class="table table-hover">
               <tbody><tr>
                   <th>{{phrase.ID}}</th>
@@ -175,11 +175,11 @@
 
 <section class="content" ng-show="views.add">
   <a ng-click="changeView('list')" class="floatRTL btn btn-danger btn-flat pull-right marginBottom15">{{phrase.cancelAdd}}</a>
-  <div class="box col-xs-12">
-    <div class="box-header">
-        <h3 class="box-title">{{phrase.addStudent}}</h3>
+  <div class="panel col-xs-12">
+    <div class="panel-heading">
+        <h3 class="panel-title">{{phrase.addStudent}}</h3>
     </div>
-    <div class="box-body table-responsive">
+    <div class="panel-body table-responsive">
       <form class="form-horizontal" ng-upload="saveAdd(content)" method="post" action="students" name="addAdmin" role="form" novalidate>
         <div class="form-group" ng-class="{'has-error': addAdmin.fullName.$invalid}">
           <label for="inputEmail3" class="col-sm-2 control-label">{{phrase.FullName}} * </label>
@@ -306,11 +306,11 @@
 
 <section class="content" ng-show="views.edit">
   <a ng-click="changeView('list')" class="floatRTL btn btn-danger btn-flat pull-right marginBottom15">{{phrase.cancelEdit}}</a>
-  <div class="box col-xs-12">
-    <div class="box-header">
-        <h3 class="box-title">{{phrase.editStudent}}</h3>
+  <div class="panel col-xs-12">
+    <div class="panel-heading">
+        <h3 class="panel-title">{{phrase.editStudent}}</h3>
     </div>
-    <div class="box-body table-responsive">
+    <div class="panel-body table-responsive">
       <form class="form-horizontal" name="editDorm" role="form" ng-upload="saveEdit(content)" method="post" action="{{'students/'+form.id}}" novalidate>
         <div class="form-group" ng-class="{'has-error': addAdmin.fullName.$invalid}">
           <label for="inputEmail3" class="col-sm-2 control-label">{{phrase.FullName}} * </label>
@@ -454,11 +454,11 @@
 <section class="content" ng-show="views.attendance">
   <a ng-click="changeView('list')" class="floatRTL btn btn-success btn-flat pull-right marginBottom15">{{phrase.Return}}</a>
 
-  <div class="box col-xs-12">
-    <div class="box-header">
-      <h3 class="box-title">{{phrase.attendanceStats}}</h3>
+  <div class="panel col-xs-12">
+    <div class="panel-heading">
+      <h3 class="panel-title">{{phrase.attendanceStats}}</h3>
     </div>
-    <div class="box-body table-responsive">
+    <div class="panel-body table-responsive">
       <table class="table table-bordered">
           <tbody><tr>
               <th>{{phrase.Date}}</th>
@@ -487,11 +487,11 @@
 
 <section class="content" ng-show="views.import">
   <a ng-click="changeView('list')" class="floatRTL btn btn-danger btn-flat pull-right marginBottom15">{{phrase.Return}}</a>
-  <div class="box col-xs-12">
-    <div class="box-header">
-        <h3 class="box-title">{{phrase.Import}} {{importType}}</h3>
+  <div class="panel col-xs-12">
+    <div class="panel-heading">
+        <h3 class="panel-title">{{phrase.Import}} {{importType}}</h3>
     </div>
-    <div class="box-body table-responsive">
+    <div class="panel-body table-responsive">
       <form class="form-horizontal" ng-upload="saveImported(content)" method="post" action="{{'students/import/'+importType}}" name="importData" role="form" novalidate>
         <div class="form-group">
           <label for="inputPassword3" class="col-sm-2 control-label">{{phrase.fileToImport}}</label>
@@ -512,15 +512,15 @@
 
 <section class="content" ng-show="views.reviewImport">
   <a ng-click="changeView('list')" class="floatRTL btn btn-danger btn-flat pull-right marginBottom15">{{phrase.Return}}</a>
-  <div class="box col-xs-12">
-    <div class="box-header">
-        <h3 class="box-title">{{phrase.Import}} {{importType}}</h3>
+  <div class="panel col-xs-12">
+    <div class="panel-heading">
+        <h3 class="panel-title">{{phrase.Import}} {{importType}}</h3>
     </div>
-    <div class="box-body table-responsive">
+    <div class="panel-body table-responsive">
       <form class="form-horizontal" ng-submit="reviewImportData()" name="importData" role="form" novalidate>
 
             <h4>{{phrase.failedImport}}</h4>
-            <div class="box-body table-responsive">
+            <div class="panel-body table-responsive">
                     <table class="table table-hover">
                     <tbody><tr>
                         <th>{{phrase.FullName}}</th>
@@ -553,7 +553,7 @@
             </div>
 
             <h4>{{phrase.readyImport}}</h4>
-            <div class="box-body table-responsive">
+            <div class="panel-body table-responsive">
                     <table class="table table-hover">
                     <tbody><tr>
                         <th>{{phrase.FullName}}</th>

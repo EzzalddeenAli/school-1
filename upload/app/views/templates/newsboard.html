@@ -7,9 +7,9 @@
 
 <section class="content" ng-show="views.list">
   <a ng-if="userRole == 'admin'" ng-click="changeView('add')" class="floatRTL btn btn-success btn-flat pull-right marginBottom15">{{phrase.addNews}}</a>
-  <div class="box col-xs-12">
-      <div class="box-header">
-          <h3 class="box-title">{{phrase.listNews}}</h3>
+  <div class="panel col-xs-12">
+      <div class="panel-heading">
+          <h3 class="panel-title">{{phrase.listNews}}</h3>
           <div class="box-tools">
               <div class="input-group pull-right">
                   <div class="input-group">
@@ -19,7 +19,7 @@
               </div>
           </div>
       </div>
-      <div class="box-body table-responsive">
+      <div class="panel-body table-responsive">
           <table class="table table-hover">
               <tbody><tr>
                   <th>{{phrase.newsTitle}}</th>
@@ -45,11 +45,11 @@
 
 <section class="content" ng-show="views.add">
 <a ng-click="changeView('list')" class="floatRTL btn btn-danger btn-flat pull-right marginBottom15">{{phrase.cancelAdd}}</a>
-  <div class="box col-xs-12">
-    <div class="box-header">
-        <h3 class="box-title">{{phrase.addNews}}</h3>
+  <div class="panel col-xs-12">
+    <div class="panel-heading">
+        <h3 class="panel-title">{{phrase.addNews}}</h3>
     </div>
-    <div class="box-body table-responsive">
+    <div class="panel-body table-responsive">
       <form class="form-horizontal" name="addDorm" role="form" ng-submit="saveAdd()" novalidate>
         <div class="form-group" ng-class="{'has-error': addDorm.newsTitle.$invalid}">
           <label for="inputEmail3" class="col-sm-2 control-label">{{phrase.newsTitle}} * </label>
@@ -93,11 +93,11 @@
 
 <section class="content" ng-show="views.edit">
   <a ng-click="changeView('list')" class="floatRTL btn btn-danger btn-flat pull-right marginBottom15">{{phrase.cancelEdit}}</a>
-  <div class="box col-xs-12">
-    <div class="box-header">
-        <h3 class="box-title">{{phrase.editNews}}</h3>
+  <div class="panel col-xs-12">
+    <div class="panel-heading">
+        <h3 class="panel-title">{{phrase.editNews}}</h3>
     </div>
-    <div class="box-body table-responsive">
+    <div class="panel-body table-responsive">
       <form class="form-horizontal" name="editDorm" role="form" ng-submit="saveEdit()" novalidate>
         <div class="form-group" ng-class="{'has-error': editDorm.newsTitle.$invalid}">
           <label for="inputEmail3" class="col-sm-2 control-label">{{phrase.newsTitle}} * </label>
@@ -139,11 +139,11 @@
 </section>
 
 <section class="content rtlPage" ng-show="views.read">
-  <div class="box col-xs-12">
-    <div class="box-header">
-        <h3 class="box-title">{{newsTitle}}</h3>
+  <div class="panel col-xs-12">
+    <div class="panel-heading">
+        <h3 class="panel-title">{{newsTitle}}</h3>
     </div>
-    <div class="box-body table-responsive">
+    <div class="panel-body table-responsive">
       <div ng-bind-html="newsText"></div>
     </div>
   </div>

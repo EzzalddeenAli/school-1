@@ -48,9 +48,9 @@ return array(
 		'mysql' => array(
 			'driver' => 'mysql',
 			'host' => 'localhost',
-			'database' => 'shah_schoex',
-			'username' => 'shah_schoex',
-			'password' => 'a%ShH,Brf4(f',
+			'database' => 'schoex',
+			'username' => 'root',
+			'password' => '',
 			'charset' => 'utf8',
 			'collation' => 'utf8_unicode_ci',
 			'prefix' => '',

@@ -5,11 +5,11 @@
 </section>
 
 <section class="content" ng-show="views.list">
- <div class="box col-xs-12">
-   <div class="box-header">
-       <h3 class="box-title">{{phrase.selectVacationDates}}</h3>
+ <div class="panel col-xs-12">
+   <div class="panel-heading">
+       <h3 class="panel-title">{{phrase.selectVacationDates}}</h3>
    </div>
-   <div class="box-body table-responsive">
+   <div class="panel-body table-responsive">
      <form class="form-horizontal" ng-submit="getVacation()" name="vacation" novalidate>
        <div class="form-group" style="z-index: 999999999;" ng-class="{'has-error': vacation.fromDate.$invalid}">
          <label for="inputPassword3" class="col-sm-2 control-label">{{phrase.from}} *</label>
@@ -36,11 +36,11 @@
 
 <section class="content" ng-show="views.lists">
  <a ng-click="changeView('list')" class="floatRTL btn btn-danger btn-flat pull-right marginBottom15">{{phrase.Return}}</a>
- <div class="box col-xs-12">
-   <div class="box-header">
-     <h3 class="box-title">{{phrase.confirmVacation}}</h3>
+ <div class="panel col-xs-12">
+   <div class="panel-heading">
+     <h3 class="panel-title">{{phrase.confirmVacation}}</h3>
    </div>
-   <div class="box-body table-responsive">
+   <div class="panel-body table-responsive">
      <form class="form-horizontal" ng-submit="confirmVacation()" name="form" novalidate>
        <table class="table table-bordered">
            <tbody><tr>
