@@ -51,7 +51,7 @@
         <a href="#"><span class="icon-bg"><i class="ti ti-search"></i></span></a>
       </li>
       <li class="toolbar-icon-bg hidden-xs">
-        <a href="#"><span class="icon-bg"><i class="ti ti-world"></i></span></i></a>
+        <a href="#" ng-click="chgAcYearModal()"><span class="icon-bg"><i class="ti ti-calendar"></i></span></i></a>
       </li>
       <li class="toolbar-icon-bg hidden-xs">
         <a href="#"><span class="icon-bg"><i class="ti ti-view-grid"></i></span></i></a>
@@ -61,7 +61,7 @@
       </li>
       <li class="dropdown toolbar-icon-bg hidden-xs">
         <a href="#" class="hasnotifications dropdown-toggle" data-toggle='dropdown'><span class="icon-bg"><i class="ti ti-email"></i></span><span
-          class="badge badge-deeporange">2</span></a>
+          class="badge badge-deeporange"></span></a>
           <div class="dropdown-menu notifications arrow">
             <div class="topnav-dropdown-header">
               <span>Messages</span>
@@ -85,63 +85,8 @@
                       <img class="img-circle avatar" src="{{URL::to('/dashboard/profileImage/'.$users['id'])}}" alt="" />
                     </div>
                     <div class="media-body">
-                      <h4 class="notification-heading"><strong>Frend Pratt</strong> <span class="text-gray">‒ I will start with the ...</span></h4>
-                      <span class="notification-time">40 mins ago</span>
-                    </div>
-                  </a>
-                </li>
-                <li class="media notification-message">
-                  <a href="#">
-                    <div class="media-left">
-                      <img class="img-circle avatar" src="{{URL::to('/dashboard/profileImage/'.$users['id'])}}" alt="" />
-                    </div>
-                    <div class="media-body">
                       <h4 class="notification-heading"><strong>Cynthia Hines</strong> <span class="text-gray">‒ Interior bits are ...</span></h4>
                       <span class="notification-time">6 hours ago</span>
-                    </div>
-                  </a>
-                </li>
-                <li class="media notification-message">
-                  <a href="#">
-                    <div class="media-left">
-                      <img class="img-circle avatar" src="{{URL::to('/dashboard/profileImage/'.$users['id'])}}" alt="" />
-                    </div>
-                    <div class="media-body">
-                      <h4 class="notification-heading"><strong>Robin Horton</strong> <span class="text-gray">‒ Are you even ...</span></h4>
-                      <span class="notification-time">8 days ago</span>
-                    </div>
-                  </a>
-                </li>
-                <li class="media notification-message">
-                  <a href="#">
-                    <div class="media-left">
-                      <img class="img-circle avatar" src="{{URL::to('/dashboard/profileImage/'.$users['id'])}}" alt="" />
-                    </div>
-                    <div class="media-body">
-                      <h4 class="notification-heading"><strong>Amanda Torrez</strong> <span class="text-gray">‒ The message is ...</span></h4>
-                      <span class="notification-time">16 hours ago</span>
-                    </div>
-                  </a>
-                </li>
-                <li class="media notification-message">
-                  <a href="#">
-                    <div class="media-left">
-                      <img class="img-circle avatar" src="{{URL::to('/dashboard/profileImage/'.$users['id'])}}" alt="" />
-                    </div>
-                    <div class="media-body">
-                      <h4 class="notification-heading"><strong>Khan Farhan</strong> <span class="text-gray">‒ Expected the stuff ...</span></h4>
-                      <span class="notification-time">2 days ago</span>
-                    </div>
-                  </a>
-                </li>
-                <li class="media notification-message">
-                  <a href="#">
-                    <div class="media-left">
-                      <img class="img-circle avatar" src="{{URL::to('/dashboard/profileImage/'.$users['id'])}}" alt="" />
-                    </div>
-                    <div class="media-body">
-                      <h4 class="notification-heading"><strong>Will Whedon</strong> <span class="text-gray">‒ The movie of this ...</span></h4>
-                      <span class="notification-time">4 days ago</span>
                     </div>
                   </a>
                 </li>
@@ -465,6 +410,17 @@ while (list($key, $value) = each($panelInit->panelItems)) {
           </ul>
         </div>
       </div>
+      <modal visible="chgAcYearModalShow">
+        <div>
+            <select class="form-control" id="selectedAcYear" ng-model="dashboardData.selectedAcYear">
+              <option ng-selected="year.id == '<?php echo $panelInit->selectAcYear;?>'" ng-repeat="year in $root.dashboardData.academicYear" value="@{{year.id}}" ng-if="year.isDefault == '0'">@{{year.yearTitle}}</option>
+              <option ng-selected="year.id == '<?php echo $panelInit->selectAcYear;?>'" ng-repeat="year in $root.dashboardData.academicYear" value="@{{year.id}}" ng-if="year.isDefault == '1'">@{{year.yearTitle}} - Default Year</option>
+            </select>
+            <br/>
+            <a class="floatRTL btn btn-success btn-flat pull-right marginBottom15 ng-binding" ng-click="chgAcYear()"><?php echo $panelInit->language['chgYear'];?></a>
+            <div class="clearfix"></div>
+        </div>
+    </modal>
       <!-- /Switcher -->
       <!-- Load site level scripts -->
 <!-- <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
