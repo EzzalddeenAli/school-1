@@ -1289,3 +1289,9 @@ fieldset[disabled] .datepicker table tr td span.active.disabled:hover.active {
     right: 10px;
     top: 5px;
   }
+  #widget-sidebar .fa{
+    color: #fff;
+  }
+  .box-tools input{
+    padding: 14px;
+  }

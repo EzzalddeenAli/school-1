@@ -1,6 +1,6 @@
 <div class="row">
   <div class="col-sm-3">
-        <a ng-click="changeView('create')" class="btn btn-lg btn-indigo btn-block mb-xl">{{phrase.composeMessage}}</a>
+    <a ng-click="changeView('create')" class="btn btn-lg btn-indigo btn-block mb-xl">{{phrase.composeMessage}}</a>
     
     <div class="list-group inbox-menu list-group-alternate">
       <a href="#" class="list-group-item active"><i class="ti ti-email"></i>{{phrase.Messages}}<span class="badge badge-primary"></span></a>
@@ -12,135 +12,145 @@
       <a href="#" class="list-group-item"><i class="ti ti-control-record circle-purple"></i>Personal</a>
     </div>
   </div><!-- col-sm-3 -->
-
-  <div class="col-sm-9">
-  
+  <div class="col-sm-9" ng-show="views.list">
     <div class="input-group mb-xl">
-        <input type="text" class="form-control input-lg" placeholder="Search mail...">
-        <span class="input-group-btn">
-          <button class="btn btn-default btn-lg" type="button"><i class="ti ti-search"></i></button>
-        </span>
-      </div><!-- /input-group -->
-
-
+      <input type="text" class="form-control input-lg" placeholder="Search mail...">
+      <span class="input-group-btn">
+        <button class="btn btn-default btn-lg" type="button"><i class="ti ti-search"></i></button>
+      </span>
+    </div><!-- /input-group -->
+    <div class="panel panel-inbox">
+      <div class="panel-body">
+        <div class="inbox-mail-heading">
+          <div class="clearfix">
+            <div class="pull-left">
+              <div class="btn-group">
+                <input type="checkbox" ng-model="selectedAll" ng-change="checkAll()"/>
+              </div>
+              <div class="btn-group">
+                <a href="#" ng-click="markRead()" class="btn btn-lg btn-default"><i class="ti ti-folder"></i></a>
+                <a href="#" ng-click="markUnRead()" class="btn btn-lg btn-default"><i class="ti ti-archive"></i></a>
+                <a href="#" ng-click="markDelete()"class="btn btn-lg btn-default"><i class="ti ti-trash"></i></a>
+              </div>
+            </div>
+           <!--  <div class="pull-right hidden-xs">
+              <strong>1</strong> of <strong>50</strong>
+              <div class="btn-group ml-sm">
+                <a href="#" class="btn btn-lg btn-default"><i class="ti ti-angle-left"></i></a>
+                <a href="#" class="btn btn-lg btn-default"><i class="ti ti-angle-right"></i></a>
+              </div>
+            </div> -->
+          </div>
+        </div>
+        <div class="table-responsive">
+          <table class="table table-mailbox">
+            <tr ng-class="{'unread': message.messageStatus == '1'}" "message.messageStatus" dir-paginate="message in messages | filter:searchText | itemsPerPage:20" total-items="totalItems">
+              <td class="small-col" style="width:90px;">
+                <input name="checked[]" ng-model="message.selected" type="checkbox" />
+                <img alt="{{message.fullName}}" class="user-image img-circle" style="width:40px; height:40px;" ng-src="{{'dashboard/profileImage/'+message.userId}}">
+              </td>
+              <td class="name"><a href="#messages/{{message.id}}">{{message.fullName}}</a></td>
+              <td class="subject"><a href="#messages/{{message.id}}">{{message.lastMessage}}</a></td>
+              <td class="time">{{message.lastMessageDate * 1000 | date:'medium'}}</td>
+            </tr>
+            <tr ng-show="!messages.length"><td class="noTableData" colspan="4">{{phrase.noMessages}}</td></tr>
+          </table>
+        </div>
+        <div class="inbox-mail-footer">
+          <div class="clearfix">
+            <div class="pull-right">
+              <div class="box-footer clearfix">
+                  <div class="pull-right">
+                      <dir-pagination-controls class="pull-right" on-page-change="pageChanged(newPageNumber)" template-url="templates/dirPagination.html" ></dir-pagination-controls>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div><!-- col-sm-8 -->
+  <section class="content" ng-show="views.create">
+    <div class="col-md-9">
       <div class="panel panel-inbox">
         <div class="panel-body">
           <div class="inbox-mail-heading">
             <div class="clearfix">
               <div class="pull-left">
+                <a href="app-inbox" class="btn btn-lg btn-default"><i class="ti ti-shift-left fa-rotate-270"></i></a>
                 <div class="btn-group">
-                        <a href="#" class="btn btn-lg btn-default dropdown-toggle" data-toggle="dropdown"><div class="checkbox-inline icheck"><input type="checkbox" value=""></div><i class="caret"></i></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="#">Select All</a></li>
-                            <li><a href="#">Unselect All</a></li>
-                            <li><a href="#">Another Action</a></li>
-                            <li class="divider"></li>
-                            <li><a href="#">Separated Link</a></li>
-                        </ul>
+                  <a href="#" class="btn btn-lg btn-default"><i class="ti ti-save"></i></a>
+                  <a href="#" class="btn btn-lg btn-default"><i class="ti ti-trash"></i></a>
+                </div>
+              </div>
+              <div class="pull-right">
+                <a ng-click="changeView('list')" class="floatRTL btn btn-danger btn-flat pull-right marginBottom15">{{phrase.Return}}</a>
+              </div>
+            </div>
+          </div>
+          <form action="" role="form" id="inbox-compose-form" class="form-horizontal p-md" ng-submit="sendMessageNow()" novalidate>
+            <div class="form-group mb-sm">
+              <div class="col-md-12">
+                <div class="row">
+                  <div class="col-xs-10">
+                    <div class="input-group input-group-lg" ng-class="{'has-error': sendMessage.toId.$invalid}">
+                      <span class="input-group-addon">{{phrase.sendMessageTo}} *</span>
+                      <input type="text" class="form-control input-lg" ng-model="form.toId" class="form-control" required placeholder="{{phrase.sendMessageTo}}">
                     </div>
-                    <div class="btn-group">
-                      <a href="#" class="btn btn-lg btn-default"><i class="ti ti-reload"></i></a>
-                                <a href="#" class="btn btn-lg btn-default"><i class="ti ti-archive"></i></a>
-                                <a href="#" class="btn btn-lg btn-default"><i class="ti ti-folder"></i></a>
-                                <a href="#" class="btn btn-lg btn-default"><i class="ti ti-trash"></i></a>
-                            </div>
+                  </div>
+                  <div class="col-xs-2"><a type="button" ng-click="linkUser()" class="btn btn-danger btn-flat">{{phrase.searchUsers}}</a></div>
                 </div>
-                <div class="pull-right hidden-xs">
-                  <strong>1</strong> of <strong>50</strong>
-                  <div class="btn-group ml-sm">
-                                <a href="#" class="btn btn-lg btn-default"><i class="ti ti-angle-left"></i></a>
-                                <a href="#" class="btn btn-lg btn-default"><i class="ti ti-angle-right"></i></a>
-                            </div>
-                </div>
+              </div>
             </div>
-          </div>
-          <table class="table table-hover table-inbox table-vam">
-            <tbody>
-              <tr class="unread">
-                <td class="inbox-msg-check" width="5%"><div class="checkbox-inline icheck"><input type="checkbox" value=""></div> </td>
-                <td class="inbox-msg-from hidden-xs hidden-sm" width="20%"><div>Terrell Tilson</div></td>
-                <td class="inbox-msg-snip"><span class="label label-primary" width="58%">Work</span>Sed ut perspiciatis unde omnis iste natus error sit voluptatem</td>
-                <td class="inbox-msg-attach"><i class="ti ti-paperclip" width="5%"></i> </td>
-                <td class="inbox-msg-time" width="12%">13:42</td>
-              </tr>
-              <tr class="unread">
-                <td class="inbox-msg-check"><div class="checkbox-inline icheck"><input type="checkbox" value=""></div> </td>
-                <td class="inbox-msg-from hidden-xs hidden-sm"><div>Tyler Charlebois</div></td>
-                <td class="inbox-msg-snip"><span class="label label-info" width="58%">Family</span>Accusantium doloremque laudantium totam rem aperiam</td>
-                <td class="inbox-msg-attach"></td>
-                <td class="inbox-msg-time">1:31</td>
-              </tr>
-              <tr>
-                <td class="inbox-msg-check"><div class="checkbox-inline icheck"><input type="checkbox" value=""></div> </td>
-                <td class="inbox-msg-from hidden-xs hidden-sm"><div>Carrol Granados</div></td>
-                <td class="inbox-msg-snip">Eaque ipsa quae ab illo inventore veritatis et quasi</td>
-                <td class="inbox-msg-attach"><i class="ti ti-paperclip"></i> </td>
-                <td class="inbox-msg-time">9/03/14</td>
-              </tr>
-              <tr>
-                <td class="inbox-msg-check"><div class="checkbox-inline icheck"><input type="checkbox" value=""></div> </td>
-                <td class="inbox-msg-from hidden-xs hidden-sm"><div>Sang Roles</div></td>
-                <td class="inbox-msg-snip">Voluptas sit aspernatur aut odit aut fugit sed quia consequuntur</td>
-                <td class="inbox-msg-attach"><i class="ti ti-paperclip"></i> </td>
-                <td class="inbox-msg-time">9/03/14</td>
-              </tr>
-              <tr>
-                <td class="inbox-msg-check"><div class="checkbox-inline icheck"><input type="checkbox" value=""></div> </td>
-                <td class="inbox-msg-from hidden-xs hidden-sm"><div>Avery Hooper</div></td>
-                <td class="inbox-msg-snip">Neque porro quisquam est qui dolorem ipsum quia dolor sit amet</td>
-                <td class="inbox-msg-attach"></td>
-                <td class="inbox-msg-time">8/03/14</td>
-              </tr>
-              <tr class="unread">
-                <td class="inbox-msg-check"><div class="checkbox-inline icheck"><input type="checkbox" value=""></div> </td>
-                <td class="inbox-msg-from hidden-xs hidden-sm"><div>Alex Murphy</div></td>
-                <td class="inbox-msg-snip"><span class="label label-primary" width="58%">Work</span>Consectetur adipisci velit sed quia non numquam eius</td>
-                <td class="inbox-msg-attach"></td>
-                <td class="inbox-msg-time">8/03/14</td>
-              </tr>
-              <tr class="unread">
-                <td class="inbox-msg-check"><div class="checkbox-inline icheck"><input type="checkbox" value=""></div> </td>
-                <td class="inbox-msg-from hidden-xs hidden-sm"><div>Bernie Maldonado</div></td>
-                <td class="inbox-msg-snip">Quis autem vel eum iure reprehenderit qui in ea voluptate</td>
-                <td class="inbox-msg-attach"><i class="ti ti-paperclip"></i> </td>
-                <td class="inbox-msg-time">8/03/14</td>
-              </tr>
-              <tr>
-                <td class="inbox-msg-check"><div class="checkbox-inline icheck"><input type="checkbox" value=""></div> </td>
-                <td class="inbox-msg-from hidden-xs hidden-sm"><div>Dominique Slay</div></td>
-                <td class="inbox-msg-snip">Vel illum qui dolorem eum fugiat quo voluptas nulla pariatur</td>
-                <td class="inbox-msg-attach"></td>
-                <td class="inbox-msg-time">7/03/14</td>
-              </tr>
-              <tr>
-                <td class="inbox-msg-check"><div class="checkbox-inline icheck"><input type="checkbox" value=""></div> </td>
-                <td class="inbox-msg-from hidden-xs hidden-sm"><div>Jc Doney</div></td>
-                <td class="inbox-msg-snip">Ullam corporis suscipit laboriosam nisi ut</td>
-                <td class="inbox-msg-attach"><i class="ti ti-paperclip"></i> </td>
-                <td class="inbox-msg-time">7/03/14</td>
-              </tr>
-              <tr>
-                <td class="inbox-msg-check"><div class="checkbox-inline icheck"><input type="checkbox" value=""></div> </td>
-                <td class="inbox-msg-from hidden-xs hidden-sm"><div>Brock Wulff</div></td>
-                <td class="inbox-msg-snip"><span class="label label-danger" width="58%">Important</span>Numquam eius modi tempora incidunt ut labore</td>
-                <td class="inbox-msg-attach"></td>
-                <td class="inbox-msg-time">7/03/14</td>
-              </tr>
-            </tbody>
-          </table>
-          <div class="inbox-mail-footer">
+            <div class="form-group mb-sm" style="display:none;">
+              <div class="col-md-12"><input type="text" class="form-control"></div>
+            </div>
+            <div class="form-group mb-sm">
+              <div class="col-md-12"><input type="text" class="form-control input-lg" placeholder="Subject for email"></div>
+            </div>
+            <div class="form-group"  ng-class="{'has-error': sendMessage.messageText.$invalid}">
+              <div class="col-xs-12">
+                <textarea name="messageText" class="form-control" ng-model="form.messageText" placeholder="{{phrase.message}}" style="height:250px"></textarea>
+              </div>
+            </div>
             <div class="clearfix">
-                <div class="pull-right">
-                  <strong>1</strong> of <strong>50</strong>
-                  <div class="btn-group ml-sm">
-                                <a href="#" class="btn btn-lg btn-default"><i class="ti ti-angle-left"></i></a>
-                                <a href="#" class="btn btn-lg btn-default"><i class="ti ti-angle-right"></i></a>
-                            </div>
+              <div class="form-group">
+                <div class="col-sm-12">
+                  <div class="pull-right">
+                    <button type="submit" class="btn btn-lg btn-success" ng-disabled="sendMessage.$invalid">{{phrase.sendMessage}}</button>
+                  </div>
                 </div>
+              </div>
             </div>
-          </div>
+          </form>
         </div>
       </div>
-
-  </div><!-- col-sm-8 -->
+    </div>
+  </section>
 </div>
+<modal visible="searchUsers">
+  <div class="row">
+    <div class="col-sm-9">
+      <input type="text" class="form-control" id="searchKeyword" placeholder="{{phrase.typeNameUserMail}}">
+    </div>
+    <div class="col-sm-2">
+      <a type="button" ng-click="searchUserButton()" class="btn btn-danger btn-flat">{{phrase.searchUsers}}</a>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12" style="padding-top:10px;">
+      <div class="box-body table-responsive">
+        <table class="table table-bordered">
+          <tbody>
+            <tr ng-repeat="user in searchResults">
+              <td>{{user.name}} - {{user.role}}</td>
+              <td>{{user.email}}</td>
+              <td class="no-print">
+                <a type="button" ng-click="linkStudentFinish(user)" class="btn btn-success btn-flat">{{phrase.select}}</a>
+              </td>
+            </tr>
+          </tbody></table>
+        </div>
+      </div>
+    </div>
+  </modal>

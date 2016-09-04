@@ -1,12 +1,12 @@
  <section class="content-header">
-    <h1>
+    <h3>
         <i class="fa fa-list"></i> {{phrase.classSch}}
-    </h1>
+    </h3>
 </section>
 
 
 <section class="content" ng-show="views.list">
-  <div class="panel col-xs-12">
+  <div class="panel panel-default">
       <div class="panel-heading">
           <h3 class="panel-title">{{phrase.classEditSch}}</h3>
           <div class="box-tools">
@@ -39,7 +39,7 @@
 <section class="content" ng-show="views.edit">
   <a ng-click="changeView('list')" class="floatRTL btn btn-danger btn-flat pull-right marginBottom15">{{phrase.Return}}</a>
   <a href="javascript:window.print()" class="floatRTL btn btn-success btn-flat pull-right marginBottom15">{{phrase.Print}}</a>
-  <div class="panel col-xs-12">
+  <div class="panel panel-default">
     <div class="panel-heading">
         <h3 class="panel-title">{{phrase.editClassSch}}</h3>
     </div>

@@ -1,12 +1,11 @@
  <section class="content-header">
-    <h1>
+    <h3>
         <i class="fa fa-gears"></i> {{phrase.Administrators}}
-    </h1>
+    </h3>
+  <a ng-click="changeView('add')" class="floatRTL btn btn-success btn-flat pull-right marginBottom15">{{phrase.addAdministrator}}</a>
 </section>
 
 <section class="content" ng-show="views.list">
-  <a ng-click="changeView('add')" class="floatRTL btn btn-success btn-flat pull-right marginBottom15">{{phrase.addAdministrator}}</a>
-  <div class="panel col-xs-12">
       <div class="panel-heading">
           <h3 class="panel-title">{{phrase.listAdministrators}}</h3>
           <div class="box-tools">
@@ -44,12 +43,10 @@
               <tr ng-show="!admins.length"><td class="noTableData" colspan="5">{{phrase.noAdministrators}}</td></tr>
           </tbody></table>
       </div>
-  </div>
 </section>
 
 <section class="content" ng-show="views.add">
   <a ng-click="changeView('list')" class="floatRTL btn btn-danger btn-flat pull-right marginBottom15">{{phrase.cancelAdd}}</a>
-  <div class="panel col-xs-12">
     <div class="panel-heading">
         <h3 class="panel-title">{{phrase.addAdministrator}}</h3>
     </div>
@@ -146,12 +143,10 @@
         </div>
       </form>
     </div>
-  </div>
 </section>
 
 <section class="content" ng-show="views.edit">
   <a ng-click="changeView('list')" class="floatRTL btn btn-danger btn-flat pull-right marginBottom15">{{phrase.cancelEdit}}</a>
-  <div class="panel col-xs-12">
     <div class="panel-heading">
         <h3 class="panel-title">{{phrase.editAdministrator}}</h3>
     </div>
@@ -248,5 +243,4 @@
         </div>
       </form>
     </div>
-  </div>
 </section>

@@ -1,13 +1,13 @@
  <section class="content-header">
-    <h1>
+    <h3>
         <i class="fa fa-file-pdf-o"></i> {{phrase.Assignments}}
-    </h1>
+    </h3>
+  <a ng-if="userRole == 'admin' || userRole == 'teacher'" ng-click="changeView('add')" class="floatRTL btn btn-success btn-flat pull-right marginBottom15">{{phrase.AddAssignments}}</a>
 </section>
 
 
 <section class="content" ng-show="views.list">
-  <a ng-if="userRole == 'admin' || userRole == 'teacher'" ng-click="changeView('add')" class="floatRTL btn btn-success btn-flat pull-right marginBottom15">{{phrase.AddAssignments}}</a>
-  <div class="panel col-xs-12">
+      <div class="panel panel-default">
       <div class="panel-heading">
           <h3 class="panel-title">{{phrase.listAssignments}}</h3>
           <div class="box-tools">
@@ -42,12 +42,12 @@
               <tr ng-show="assignments.length == '0'"><td class="noTableData" colspan="5">{{phrase.noAssignments}}</td></tr>
           </tbody></table>
       </div>
-  </div>
+      </div>
 </section>
 
 <section class="content" ng-show="views.add">
   <a ng-click="changeView('list')" class="floatRTL btn btn-danger btn-flat pull-right marginBottom15">{{phrase.cancelAdd}}</a>
-  <div class="panel col-xs-12">
+    <div class="panel panel-default">
     <div class="panel-heading">
         <h3 class="panel-title">{{phrase.AddAssignments}}</h3>
     </div>
@@ -110,12 +110,12 @@
         </div>
       </form>
     </div>
-  </div>
+    </div>
 </section>
 
 <section class="content" ng-show="views.edit">
   <a ng-click="changeView('list')" class="floatRTL btn btn-danger btn-flat pull-right marginBottom15">{{phrase.cancelEdit}}</a>
-  <div class="panel col-xs-12">
+    <div class="panel panel-default">
     <div class="panel-heading">
         <h3 class="panel-title">{{phrase.editAssignment}}</h3>
     </div>
@@ -178,12 +178,12 @@
         </div>
       </form>
     </div>
-  </div>
+    </div>
 </section>
 
 <section class="content" ng-show="views.upload">
   <a ng-click="changeView('list')" class="floatRTL btn btn-danger btn-flat pull-right marginBottom15">{{phrase.Return}}</a>
-  <div class="panel col-xs-12">
+  <div class="panel panel-default">
     <div class="panel-heading">
         <h3 class="panel-title">{{phrase.uploadAnswer}}</h3>
     </div>
@@ -214,7 +214,7 @@
 
 <section class="content" ng-show="views.answers">
   <a ng-click="changeView('list')" class="floatRTL btn btn-success btn-flat pull-right marginBottom15">{{phrase.Return}}</a>
-  <div class="panel col-xs-12">
+  <div class="panel panel-default">
       <div class="panel-heading">
           <h3 class="panel-title">{{phrase.viewAnswers}}</h3>
           <div class="box-tools">

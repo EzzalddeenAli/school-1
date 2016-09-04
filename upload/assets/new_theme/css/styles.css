@@ -29131,3 +29131,20 @@ fieldset[disabled] .datepicker table tr td span.active.disabled:hover.active {
   width: 14px;
   height: 14px;
 }
+.box-tools{
+    position: absolute;
+    right: 10px;
+    top: 5px;
+  }
+  #widget-sidebar .fa{
+    color: #fff;
+  }
+  .box-tools input {
+    padding: 14px;
+  }
+  .content-header{
+    margin-bottom: 12px;
+  }
+  .content-header h3{
+    display: inline;
+  }

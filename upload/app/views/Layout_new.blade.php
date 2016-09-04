@@ -15,6 +15,7 @@
   <link type="text/css" href="{{URL::asset('assets/new_theme/fonts/themify-icons/themify-icons.css')}}" rel="stylesheet">              <!-- Themify Icons -->
   <link type="text/css" href="{{URL::asset('assets/new_theme/plugins/codeprettifier/prettify.css')}}" rel="stylesheet">                <!-- Code Prettifier -->
   <link type="text/css" href="{{URL::asset('assets/new_theme/plugins/iCheck/skins/minimal/blue.css')}}" rel="stylesheet">              <!-- iCheck -->
+  <link rel="stylesheet" href="{{URL::asset('assets/plugins/skylo/vendor/styles/skylo.css')}}" />
     <!--[if lt IE 10]>
     <script type="text/javascript" src="{{URL::asset('assets/js/media.match.min.js')}}"></script>
     <script type="text/javascript" src="{{URL::asset('assets/js/respond.min.js')}}"></script>
@@ -26,9 +27,11 @@
     <link type="text/css" href="{{URL::asset('assets/new_theme/plugins/switchery/switchery.css')}}" rel="stylesheet">
   <link type="text/css" href="{{URL::asset('assets/new_theme/css/styles.css')}}" rel="stylesheet">                                     <!-- Core CSS with all styles -->
   </head>
-</head>
-<body class="hold-transition <?php echo $panelInit->defTheme;?> sidebar-mini" ng-app="schoex" ng-controller="mainController">
-  <header id="topnav" class="navbar navbar-default navbar-fixed-top" role="banner">
+  <script>
+    var baseUrl = "{{URL::to('/')}}";
+  </script>
+<body class="hold-transition <?php echo $panelInit->defTheme . " " . $theme['sidebarColor'] . " " . $theme['boxLayout'] . " " . $theme['collapseNav'];?> sidebar-mini" ng-app="schoex" ng-controller="mainController">
+  <header id="topnav" class="navbar <?php echo $theme['topNavColor'] . " " . $theme['fixHeader'];?>" role="banner">
     <div class="logo-area">
       <span id="trigger-sidebar" class="toolbar-trigger toolbar-icon-bg">
         <a data-toggle="tooltips" data-placement="right" title="Toggle Sidebar">
@@ -53,43 +56,33 @@
       <li class="toolbar-icon-bg hidden-xs">
         <a href="#" ng-click="chgAcYearModal()"><span class="icon-bg"><i class="ti ti-calendar"></i></span></i></a>
       </li>
-      <li class="toolbar-icon-bg hidden-xs">
-        <a href="#"><span class="icon-bg"><i class="ti ti-view-grid"></i></span></i></a>
-      </li>
       <li class="toolbar-icon-bg hidden-xs" id="trigger-fullscreen">
         <a href="#" class="toggle-fullscreen"><span class="icon-bg"><i class="ti ti-fullscreen"></i></span></i></a>
       </li>
       <li class="dropdown toolbar-icon-bg hidden-xs">
         <a href="#" class="hasnotifications dropdown-toggle" data-toggle='dropdown'><span class="icon-bg"><i class="ti ti-email"></i></span><span
-          class="badge badge-deeporange"></span></a>
+          class="badge badge-deeporange">{{$stats['newMessages']}}</span></a>
           <div class="dropdown-menu notifications arrow">
             <div class="topnav-dropdown-header">
               <span>Messages</span>
             </div>
             <div class="scroll-pane">
               <ul class="media-list scroll-content">
+              <?php foreach ($messages as $key => $msg): ?>
+
                 <li class="media notification-message">
-                  <a href="#">
+                  <a href="#/messages/"<?=$msg->id?>>
                     <div class="media-left">
-                      <img class="img-circle avatar" src="{{URL::to('/dashboard/profileImage/'.$users['id'])}}" alt="" />
+                      <img class="img-circle avatar" src="{{URL::to('/dashboard/profileImage/'.$msg->userId)}}" alt="" />
                     </div>
                     <div class="media-body">
-                      <h4 class="notification-heading"><strong>Vincent Keller</strong> <span class="text-gray">‒ Design should be ...</span></h4>
-                      <span class="notification-time">2 mins ago</span>
+                      <h4 class="notification-heading"><strong><?=$msg->fullName?></strong> <span class="text-gray"><?=$msg->lastMessage?></span></h4>
+                      <!-- <span class="notification-time">2 mins ago</span> -->
                     </div>
                   </a>
                 </li>
-                <li class="media notification-message">
-                  <a href="#">
-                    <div class="media-left">
-                      <img class="img-circle avatar" src="{{URL::to('/dashboard/profileImage/'.$users['id'])}}" alt="" />
-                    </div>
-                    <div class="media-body">
-                      <h4 class="notification-heading"><strong>Cynthia Hines</strong> <span class="text-gray">‒ Interior bits are ...</span></h4>
-                      <span class="notification-time">6 hours ago</span>
-                    </div>
-                  </a>
-                </li>
+
+              <?php endforeach?>
               </ul>
             </div>
             <div class="topnav-dropdown-footer">
@@ -307,8 +300,8 @@ while (list($key, $value) = each($panelInit->panelItems)) {
             <div class="static-content">
               <div class="page-content">
                 <ol class="breadcrumb">
-                  <li class=""><a href="index.html">Home</a></li>
-                  <li class="active"><a href="index.html">Dashboard</a></li>
+                  <!-- <li class=""><a href="index.html">Home</a></li>
+                  <li class="active"><a href="index.html">Dashboard</a></li> -->
                 </ol>
                 <div class="container-fluid" ng-view>
                   <div id='overlay'>
@@ -334,7 +327,7 @@ while (list($key, $value) = each($panelInit->panelItems)) {
       <!-- Switcher -->
       <div class="demo-options">
         <div class="demo-options-icon"><i class="ti ti-paint-bucket"></i></div>
-        <div class="demo-heading">Demo Settings</div>
+        <div class="demo-heading">Theme Settings</div>
         <div class="demo-body">
           <div class="tabular">
             <div class="tabular-row">
@@ -432,14 +425,13 @@ while (list($key, $value) = each($panelInit->panelItems)) {
   <script type="text/javascript" src="{{URL::asset('assets/new_theme/plugins/velocityjs/velocity.min.js')}}"></script>          <!-- Load Velocity for Animated Content -->
   <script type="text/javascript" src="{{URL::asset('assets/new_theme/plugins/velocityjs/velocity.ui.min.js')}}"></script>
   <script type="text/javascript" src="{{URL::asset('assets/new_theme/plugins/wijets/wijets.js')}}"></script>                <!-- Wijet -->
+  <script src="{{URL::asset('assets/plugins/datepicker/bootstrap-datepicker.js')}}"></script>
   <script type="text/javascript" src="{{URL::asset('assets/new_theme/plugins/codeprettifier/prettify.js')}}"></script>        <!-- Code Prettifier  -->
   <script type="text/javascript" src="{{URL::asset('assets/new_theme/plugins/bootstrap-switch/bootstrap-switch.js')}}"></script>    <!-- Swith/Toggle Button -->
   <script type="text/javascript" src="{{URL::asset('assets/new_theme/plugins/bootstrap-tabdrop/js/bootstrap-tabdrop.js')}}"></script>  <!-- Bootstrap Tabdrop -->
   <script type="text/javascript" src="{{URL::asset('assets/new_theme/plugins/iCheck/icheck.min.js')}}"></script>              <!-- iCheck -->
   <script type="text/javascript" src="{{URL::asset('assets/new_theme/plugins/nanoScroller/js/jquery.nanoscroller.min.js')}}"></script> <!-- nano scroller -->
   <script type="text/javascript" src="{{URL::asset('assets/new_theme/js/application.js')}}"></script>
-  <script type="text/javascript" src="{{URL::asset('assets/new_theme/demo/demo.js')}}"></script>
-  <script type="text/javascript" src="{{URL::asset('assets/new_theme/demo/demo-switcher.js')}}"></script>
   <!-- End loading site level scripts -->
   <!-- Load page level scripts-->
   <!-- Charts -->
@@ -458,6 +450,9 @@ while (list($key, $value) = each($panelInit->panelItems)) {
   <script type="text/javascript" src="{{URL::asset('assets/new_theme/plugins/fullcalendar/moment.min.js')}}"></script>          <!-- Moment.js Dependency -->
   <script type="text/javascript" src="{{URL::asset('assets/new_theme/plugins/fullcalendar/fullcalendar.min.js')}}"></script>        <!-- Calendar Plugin -->
   <!-- <script type="text/javascript" src="{{URL::asset('assets/new_theme/demo/demo-index.js')}}"></script> -->
+  <script src="{{URL::asset('assets/js/intlTelInput.min.js')}}"></script>
+  <!-- <script src="bower_components/oclazyload/dist/ocLazyLoad.min.js"></script> -->
+  <script src="{{URL::asset('assets/plugins/skylo/vendor/scripts/skylo.js')}}"></script>
   <div ng-spinner-loader></div>
   <input type="hidden" id="rooturl" value="{{URL::asset('/')}}"/>
   <input type="hidden" id="utilsScript" value="{{URL::asset('assets/js/utils.js')}}"/>

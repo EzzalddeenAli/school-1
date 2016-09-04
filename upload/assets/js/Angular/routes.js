@@ -596,24 +596,24 @@ schoex.directive('colorbox', function() {
     }
   };
 });
-schoex.directive('ckEditor', [function () {
-    return {
-        require: '?ngModel',
-        link: function ($scope, elm, attr, ngModel) {
-            var ck = CKEDITOR.replace(elm[0]);
+// schoex.directive('ckEditor', [function () {
+//     return {
+//         require: '?ngModel',
+//         link: function ($scope, elm, attr, ngModel) {
+//             var ck = CKEDITOR.replace(elm[0]);
 
-            ck.on('pasteState', function () {
-                $scope.$apply(function () {
-                    ngModel.$setViewValue(ck.getData());
-                });
-            });
+//             ck.on('pasteState', function () {
+//                 $scope.$apply(function () {
+//                     ngModel.$setViewValue(ck.getData());
+//                 });
+//             });
 
-            ngModel.$render = function (value) {
-                ck.setData(ngModel.$modelValue);
-            };
-        }
-    };
-}]);
+//             ngModel.$render = function (value) {
+//                 ck.setData(ngModel.$modelValue);
+//             };
+//         }
+//     };
+// }]);
 schoex.directive('calendarBox', function($parse, $timeout,$rootScope){
     return {
         restrict: 'A',

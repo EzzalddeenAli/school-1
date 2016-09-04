@@ -1,12 +1,12 @@
  <section class="content-header">
-    <h1>
+    <h3>
         <i class="fa fa-font"></i> {{phrase.Languages}}
-    </h1>
+    </h3>
+  <a ng-click="changeView('add')" class="floatRTL btn btn-success btn-flat pull-right marginBottom15">{{phrase.addLanguage}}</a>
 </section>
 
 <section class="content" ng-show="views.list">
-  <a ng-click="changeView('add')" class="floatRTL btn btn-success btn-flat pull-right marginBottom15">{{phrase.addLanguage}}</a>
-  <div class="panel col-xs-12">
+  <div class="panel panel-default">
       <div class="panel-heading">
           <h3 class="panel-title">{{phrase.listLanguage}}</h3>
           <div class="box-tools">
@@ -39,7 +39,7 @@
 
 <section class="content" ng-show="views.add">
 <a ng-click="changeView('list')" class="floatRTL btn btn-danger btn-flat pull-right marginBottom15">{{phrase.cancelAdd}}</a>
-  <div class="panel col-xs-12">
+  <div class="panel panel-default">
     <div class="panel-heading">
         <h3 class="panel-title">{{phrase.addLanguage}}</h3>
     </div>
@@ -1001,7 +1001,7 @@
 
 <section class="content" ng-show="views.edit">
   <a ng-click="changeView('list')" class="floatRTL btn btn-danger btn-flat pull-right marginBottom15">{{phrase.cancelEdit}}</a>
-  <div class="panel col-xs-12">
+  <div class="panel panel-default">
     <div class="panel-heading">
         <h3 class="panel-title">{{phrase.editLanguage}}</h3>
     </div>

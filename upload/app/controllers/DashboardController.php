@@ -7,13 +7,14 @@ class DashboardController extends \BaseController {
 	var $layout = 'dashboard';
 
 	public function __construct() {
+		$this->data['users'] = \Auth::user();
 		$this->panelInit = new \DashboardInit();
 		$this->data['panelInit'] = $this->panelInit;
 		$this->data['breadcrumb']['User Settings'] = \URL::to('/dashboard/user');
-		$this->data['users'] = \Auth::user();
 	}
 
 	public function index($method = "main") {
+		$logged_user_id = $this->data['users']->id;
 		$languages = languages::where('id', 1)->first()->toArray();
 		$languages['languagePhrases'] = json_decode($languages['languagePhrases'], true);
 
@@ -21,6 +22,23 @@ class DashboardController extends \BaseController {
 			$this->data['latestVersion'] = $this->panelInit->settingsArray['latestVersion'];
 		}
 		$this->data['role'] = $this->data['users']->role;
+		$this->data['stats']['newMessages'] = messages_list::where('userId', $this->data['users']->id)->where('messageStatus', 1)->count();
+		$theme = ThemeConfiguration::where('user_id', $logged_user_id)->get()->toArray();
+		if (count($theme)) {
+			$this->data['theme'] = $theme[0];
+		} else {
+			$this->data["theme"] = array(
+				"topNavColor" => "demo-graylight",
+				"sidebarColor" => "demo-yellow",
+				"boxLayout" => "",
+				"fixHeader" => "navbar-static-top",
+				"collapseNav" => "",
+				"user_id" => $logged_user_id,
+			);
+		}
+		$this->data['messages'] = DB::select(DB::raw("SELECT messages_list.id as id,messages_list.lastMessageDate as lastMessageDate,messages_list.lastMessage as lastMessage,messages_list.messageStatus as messageStatus,users.fullName as fullName,users.photo,users.id as userId FROM messages_list LEFT JOIN users ON users.id=IF(messages_list.userId = '" . $this->data['users']->id . "',messages_list.toId,messages_list.userId) where userId='" . $this->data['users']->id . "' order by id DESC limit 5"));
+		// echo "<pre>";
+		// print_r($this->data);die;
 		$this->panelInit->viewop($this->layout, 'welcome', $this->data);
 	}
 
@@ -95,7 +113,6 @@ class DashboardController extends \BaseController {
 		$toReturn['teacherLeaderBoard'] = User::where('role', 'teacher')->where('isLeaderBoard', '!=', '')->where('isLeaderBoard', '!=', '0')->get()->toArray();
 		$toReturn['studentLeaderBoard'] = User::where('role', 'student')->where('isLeaderBoard', '!=', '')->where('isLeaderBoard', '!=', '0')->get()->toArray();
 		$toReturn['latestStudent'] = User::where('role', 'student')->where('activated', 1)->orderBy('id', 'desc')->limit(5)->get()->toArray();
-
 		$toReturn['newsEvents'] = array();
 		$newsboard = newsboard::where('newsFor', $this->data['users']->role)->orWhere('newsFor', 'all')->orderBy('id', 'desc')->limit(5)->get();
 		foreach ($newsboard as $event) {
@@ -400,7 +417,6 @@ class DashboardController extends \BaseController {
 
 		return array();
 	}
-
 	public function savePolls() {
 		$toReturn = array();
 

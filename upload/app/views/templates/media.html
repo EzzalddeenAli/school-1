@@ -1,12 +1,12 @@
  <section class="content-header">
-    <h1>
+    <h3>
         <i class="fa fa-video-camera"></i> {{phrase.mediaCenter}}
-    </h1>
+    </h3>
+  <a ng-show="dirParent!='-1'" ng-click="chDir(dirParent)" class="floatRTL btn btn-success btn-flat pull-right marginBottom15">{{phrase.goUp}}</a>
 </section>
 
 
 <section class="content" ng-show="views.list">
-  <a ng-show="dirParent!='-1'" ng-click="chDir(dirParent)" class="floatRTL btn btn-success btn-flat pull-right marginBottom15">{{phrase.goUp}}</a>
   <a ng-if="userRole == 'admin'" ng-click="changeView('addMedia')" class="floatRTL btn btn-success btn-flat pull-right marginBottom15">{{phrase.uploadMedia}}</a>
   <a ng-if="userRole == 'admin'" ng-click="changeView('addAlbum')" class="floatRTL btn btn-success btn-flat pull-right marginBottom15">{{phrase.addAlbum}}</a>
 
@@ -73,7 +73,7 @@
 
 <section class="content" ng-show="views.addAlbum">
   <a ng-click="changeView('list')" class="floatRTL btn btn-danger btn-flat pull-right marginBottom15">{{phrase.cancelAdd}}</a>
-  <div class="panel col-xs-12">
+  <div class="panel panel-default">
     <div class="panel-heading">
         <h3 class="panel-title">{{phrase.addAlbum}}</h3>
     </div>
@@ -111,7 +111,7 @@
 
 <section class="content" ng-show="views.editAlbum">
   <a ng-click="changeView('list')" class="floatRTL btn btn-danger btn-flat pull-right marginBottom15">{{phrase.cancelEdit}}</a>
-  <div class="panel col-xs-12">
+  <div class="panel panel-default">
     <div class="panel-heading">
         <h3 class="panel-title">{{phrase.editAlbum}}</h3>
     </div>
@@ -149,7 +149,7 @@
 
 <section class="content" ng-show="views.addMedia">
   <a ng-click="changeView('list')" class="floatRTL btn btn-danger btn-flat pull-right marginBottom15">{{phrase.cancelAdd}}</a>
-  <div class="panel col-xs-12">
+  <div class="panel panel-default">
     <div class="panel-heading">
         <h3 class="panel-title">{{phrase.addMedia}}</h3>
     </div>
@@ -220,7 +220,7 @@
 
 <section class="content" ng-show="views.editMedia">
   <a ng-click="changeView('list')" class="floatRTL btn btn-danger btn-flat pull-right marginBottom15">{{phrase.cancelEdit}}</a>
-  <div class="panel col-xs-12">
+  <div class="panel panel-default">
     <div class="panel-heading">
         <h3 class="panel-title">{{phrase.editMedia}}</h3>
     </div>

@@ -1,13 +1,13 @@
  <section class="content-header">
-    <h1>
-        <i class="fa fa-file-text"></i> {{phrase.staticPages}}
-    </h1>
+    <h3>
+        <i class="fa fa-file"></i> {{phrase.staticPages}}
+    </h3>
+      <a ng-if="userRole == 'admin'" ng-click="changeView('add')" class="floatRTL btn btn-success btn-flat pull-right marginBottom15">{{phrase.addPage}}</a>
 </section>
 
 
 <section class="content" ng-show="views.list">
   <div class="panel panel-default">
-  <a ng-if="userRole == 'admin'" ng-click="changeView('add')" class="floatRTL btn btn-success btn-flat pull-right marginBottom15">{{phrase.addPage}}</a>
       <div class="panel-heading">
           <h3 class="panel-title">{{phrase.listPages}}</h3>
           <div class="box-tools">

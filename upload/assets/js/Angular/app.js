@@ -25,7 +25,6 @@ var schoex = angular.module('schoex',['ngRoute','ngCookies','ngUpload','ui.autoc
       }
     }
   };
-
   $rootScope.defaultAcademicYear = function() {
       angular.forEach($rootScope.dashboardData.academicYear, function (item) {
           if(item.isDefault == "1"){
@@ -36,7 +35,33 @@ var schoex = angular.module('schoex',['ngRoute','ngCookies','ngUpload','ui.autoc
 
   xhr.send(null);
 });
+schoex.factory('progressLoader', function() {
+    'use strict';
 
+    angular.element.skylo({
+      flat: true
+    });
+
+    return {
+      start: function() {
+        angular.element.skylo('start');
+      },
+      set: function(position) {
+        angular.element.skylo('set', position);
+      },
+      end: function() {
+        angular.element.skylo('end');
+      },
+      get: function() {
+        return angular.element.skylo('get');
+      },
+      inch: function(amount) {
+        angular.element.skylo('show', function() {
+          angular.element(document).skylo('inch', amount);
+        });
+      }
+    };
+  });
 schoex.config(function($logProvider){
     $logProvider.debugEnabled(false);
 });
@@ -53,7 +78,7 @@ schoex.run(['$http', 'CSRF_TOKEN', function($http, CSRF_TOKEN) {
     $http.defaults.headers.common['X-Csrf-Token'] = CSRF_TOKEN;
 }]);
 
-schoex.controller('mainController', function(dataFactory,$rootScope,$route,$scope) {
+schoex.controller('mainController', function(dataFactory,progressLoader,$location,$rootScope,$route,$scope) {
   var data = $rootScope.dashboardData;
   $scope.phrase = $rootScope.phrase;
 
@@ -91,6 +116,20 @@ schoex.controller('mainController', function(dataFactory,$rootScope,$route,$scop
     });
   }
   showHideLoad(true);
+  $scope.$on('$routeChangeStart', function() {
+      if ($location.path() === '') {
+        return $location.path('/');
+      }
+      progressLoader.start();
+      progressLoader.set(50);
+    });
+    $scope.$on('$routeChangeSuccess', function() {
+      progressLoader.end();
+      if ($scope.layoutLoading) {
+        $scope.layoutLoading = false;
+      }
+      // wijetsService.make();
+    });
 });
 
 schoex.controller('dashboardController', function(dataFactory,$rootScope,$scope) {
