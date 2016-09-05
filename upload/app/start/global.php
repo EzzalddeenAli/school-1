@@ -9,14 +9,14 @@
 | load your controllers and models. This is useful for keeping all of
 | your classes in the "global" namespace without Composer updating.
 |
-*/
+ */
 
 ClassLoader::addDirectories(array(
 
-	app_path().'/commands',
-	app_path().'/controllers',
-	app_path().'/models',
-	app_path().'/database/seeds',
+	app_path() . '/commands',
+	app_path() . '/controllers',
+	app_path() . '/models',
+	app_path() . '/database/seeds',
 
 ));
 
@@ -29,9 +29,9 @@ ClassLoader::addDirectories(array(
 | is built on top of the wonderful Monolog library. By default we will
 | build a basic log file setup which creates a single file for logs.
 |
-*/
+ */
 
-Log::useFiles(storage_path().'/logs/laravel.log');
+Log::useFiles(storage_path() . '/logs/laravel.log');
 
 /*
 |--------------------------------------------------------------------------
@@ -44,10 +44,9 @@ Log::useFiles(storage_path().'/logs/laravel.log');
 | exceptions. If nothing is returned, the default error view is
 | shown, which includes a detailed stack trace during debug.
 |
-*/
+ */
 
-App::error(function(Exception $exception, $code)
-{
+App::error(function (Exception $exception, $code) {
 	Log::error($exception);
 });
 
@@ -60,10 +59,9 @@ App::error(function(Exception $exception, $code)
 | into maintenance mode. Here, you will define what is displayed back
 | to the user if maintenance mode is in effect for the application.
 |
-*/
+ */
 
-App::down(function()
-{
+App::down(function () {
 	return Response::make("Be right back!", 503);
 });
 
@@ -76,94 +74,157 @@ App::down(function()
 | a nice separate location to store our route and application filter
 | definitions instead of putting them all in the main routes file.
 |
-*/
+ */
 
-App::error(function(Exception $exception, $code) {
-    if ($exception instanceof \Symfony\Component\HttpKernel\Exception\NotFoundHttpException)
-        Log::error('NotFoundHttpException Route: ' . Request::url() );
+App::error(function (Exception $exception, $code) {
+	if ($exception instanceof \Symfony\Component\HttpKernel\Exception\NotFoundHttpException) {
+		Log::error('NotFoundHttpException Route: ' . Request::url());
+	}
 
-    Log::error($exception);
+	Log::error($exception);
 });
 
-require app_path().'/filters.php';
+require app_path() . '/filters.php';
 
-if(!function_exists('strptime')) {
-	function strptime($sDate, $sFormat)
-	{
-		$aResult = array('tm_sec'   => 0,'tm_min'   => 0,'tm_hour'  => 0,'tm_mday'  => 1,'tm_mon'   => 0,'tm_year'  => 0,'tm_wday'  => 0,'tm_yday'  => 0,'unparsed' => $sDate);
-		while($sFormat != "")
-		{
+if (!function_exists('strptime')) {
+	function strptime($sDate, $sFormat) {
+		$aResult = array('tm_sec' => 0, 'tm_min' => 0, 'tm_hour' => 0, 'tm_mday' => 1, 'tm_mon' => 0, 'tm_year' => 0, 'tm_wday' => 0, 'tm_yday' => 0, 'unparsed' => $sDate);
+		while ($sFormat != "") {
 			$nIdxFound = strpos($sFormat, '%');
-			if($nIdxFound === false)
-			{
+			if ($nIdxFound === false) {
 				$aResult['unparsed'] = ($sFormat == $sDate) ? "" : $sDate;
 				break;
 			}
 			$sFormatBefore = substr($sFormat, 0, $nIdxFound);
-			$sDateBefore   = substr($sDate,   0, $nIdxFound);
-			if($sFormatBefore != $sDateBefore) break;
+			$sDateBefore = substr($sDate, 0, $nIdxFound);
+			if ($sFormatBefore != $sDateBefore) {
+				break;
+			}
+
 			// ===== Read the value of the %x found =====
 			$sFormat = substr($sFormat, $nIdxFound);
-			$sDate   = substr($sDate,   $nIdxFound);
+			$sDate = substr($sDate, $nIdxFound);
 			$aResult['unparsed'] = $sDate;
 			$sFormatCurrent = substr($sFormat, 0, 2);
-			$sFormatAfter   = substr($sFormat, 2);
+			$sFormatAfter = substr($sFormat, 2);
 			$nValue = -1;
 			$sDateAfter = "";
-			switch($sFormatCurrent)
-			{
-				case '%S': // Seconds after the minute (0-59)
-					sscanf($sDate, "%2d%[^\\n]", $nValue, $sDateAfter);
-					if(($nValue < 0) || ($nValue > 59)) return false;
-					$aResult['tm_sec']  = $nValue;
-					break;
-				// ----------
-				case '%M': // Minutes after the hour (0-59)
-					sscanf($sDate, "%2d%[^\\n]", $nValue, $sDateAfter);
-					if(($nValue < 0) || ($nValue > 59)) return false;
-					$aResult['tm_min']  = $nValue;
-					break;
-				// ----------
-				case '%H': // Hour since midnight (0-23)
-					sscanf($sDate, "%2d%[^\\n]", $nValue, $sDateAfter);
-					if(($nValue < 0) || ($nValue > 23)) return false;
-					$aResult['tm_hour']  = $nValue;
-					break;
-				// ----------
-				case '%d': // Day of the month (1-31)
-					sscanf($sDate, "%2d%[^\\n]", $nValue, $sDateAfter);
-					if(($nValue < 1) || ($nValue > 31)) return false;
-					$aResult['tm_mday']  = $nValue;
-					break;
-				// ----------
-				case '%m': // Months since January (0-11)
-					sscanf($sDate, "%2d%[^\\n]", $nValue, $sDateAfter);
-					if(($nValue < 1) || ($nValue > 12)) return false;
-					$aResult['tm_mon']  = ($nValue - 1);
-					break;
-				// ----------
-				case '%Y': // Years since 1900
-					sscanf($sDate, "%4d%[^\\n]", $nValue, $sDateAfter);
-					if($nValue < 1900) return false;
-					$aResult['tm_year']  = ($nValue - 1900);
-					break;
-				// ----------
-				default:
-					break 2; // Break Switch and while
+			switch ($sFormatCurrent) {
+			case '%S': // Seconds after the minute (0-59)
+				sscanf($sDate, "%2d%[^\\n]", $nValue, $sDateAfter);
+				if (($nValue < 0) || ($nValue > 59)) {
+					return false;
+				}
+
+				$aResult['tm_sec'] = $nValue;
+				break;
+			// ----------
+			case '%M': // Minutes after the hour (0-59)
+				sscanf($sDate, "%2d%[^\\n]", $nValue, $sDateAfter);
+				if (($nValue < 0) || ($nValue > 59)) {
+					return false;
+				}
+
+				$aResult['tm_min'] = $nValue;
+				break;
+			// ----------
+			case '%H': // Hour since midnight (0-23)
+				sscanf($sDate, "%2d%[^\\n]", $nValue, $sDateAfter);
+				if (($nValue < 0) || ($nValue > 23)) {
+					return false;
+				}
+
+				$aResult['tm_hour'] = $nValue;
+				break;
+			// ----------
+			case '%d': // Day of the month (1-31)
+				sscanf($sDate, "%2d%[^\\n]", $nValue, $sDateAfter);
+				if (($nValue < 1) || ($nValue > 31)) {
+					return false;
+				}
+
+				$aResult['tm_mday'] = $nValue;
+				break;
+			// ----------
+			case '%m': // Months since January (0-11)
+				sscanf($sDate, "%2d%[^\\n]", $nValue, $sDateAfter);
+				if (($nValue < 1) || ($nValue > 12)) {
+					return false;
+				}
+
+				$aResult['tm_mon'] = ($nValue - 1);
+				break;
+			// ----------
+			case '%Y': // Years since 1900
+				sscanf($sDate, "%4d%[^\\n]", $nValue, $sDateAfter);
+				if ($nValue < 1900) {
+					return false;
+				}
+
+				$aResult['tm_year'] = ($nValue - 1900);
+				break;
+			// ----------
+			default:
+				break 2; // Break Switch and while
 			} // END of case format
 			// ===== Next please =====
 			$sFormat = $sFormatAfter;
-			$sDate   = $sDateAfter;
+			$sDate = $sDateAfter;
 			$aResult['unparsed'] = $sDate;
 		} // END of while($sFormat != "")
 		// ===== Create the other value of the result array =====
 		$nParsedDateTimestamp = mktime($aResult['tm_hour'], $aResult['tm_min'], $aResult['tm_sec'],
-								$aResult['tm_mon'] + 1, $aResult['tm_mday'], $aResult['tm_year'] + 1900);
+			$aResult['tm_mon'] + 1, $aResult['tm_mday'], $aResult['tm_year'] + 1900);
 		// Before PHP 5.1 return -1 when error
-		if(($nParsedDateTimestamp === false)
-		||($nParsedDateTimestamp === -1)) return false;
+		if (($nParsedDateTimestamp === false)
+			|| ($nParsedDateTimestamp === -1)) {
+			return false;
+		}
+
 		$aResult['tm_wday'] = (int) strftime("%w", $nParsedDateTimestamp); // Days since Sunday (0-6)
 		$aResult['tm_yday'] = (strftime("%j", $nParsedDateTimestamp) - 1); // Days since January 1 (0-365)
 		return $aResult;
 	} // END of function
+}
+function time_elapsed_string($datetime, $full = false) {
+	if (empty($datetime)) {
+		return "No date provided";
+	}
+
+	$periods = array("second", "minute", "hour", "day", "week", "month", "year", "decade");
+	$lengths = array("60", "60", "24", "7", "4.35", "12", "10");
+
+	$now = time();
+	if (is_numeric($datetime)) {
+		$unix_date = $datetime;
+	} else {
+		$unix_date = strtotime($datetime);
+	}
+
+	// check validity of date
+	if (empty($unix_date)) {
+		return "undefined time";
+	}
+
+	// is it future date or past date
+	if ($now > $unix_date) {
+		$difference = $now - $unix_date;
+		$tense = "ago";
+
+	} else {
+		$difference = $unix_date - $now;
+		$tense = "from now";
+	}
+
+	for ($j = 0; $difference >= $lengths[$j] && $j < count($lengths) - 1; $j++) {
+		$difference /= $lengths[$j];
+	}
+
+	$difference = round($difference);
+
+	if ($difference != 1) {
+		$periods[$j] .= "s";
+	}
+
+	return "$difference $periods[$j] {$tense}";
 }

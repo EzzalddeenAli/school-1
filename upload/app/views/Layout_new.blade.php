@@ -61,7 +61,7 @@
       </li>
       <li class="dropdown toolbar-icon-bg hidden-xs">
         <a href="#" class="hasnotifications dropdown-toggle" data-toggle='dropdown'><span class="icon-bg"><i class="ti ti-email"></i></span><span
-          class="badge badge-deeporange">{{$stats['newMessages']}}</span></a>
+          class="badge badge-deeporange">{{$stats['newMessages']==0?"":$stats['newMessages']}}</span></a>
           <div class="dropdown-menu notifications arrow">
             <div class="topnav-dropdown-header">
               <span>Messages</span>
@@ -77,7 +77,7 @@
                     </div>
                     <div class="media-body">
                       <h4 class="notification-heading"><strong><?=$msg->fullName?></strong> <span class="text-gray"><?=$msg->lastMessage?></span></h4>
-                      <!-- <span class="notification-time">2 mins ago</span> -->
+                      <span class="notification-time">{{time_elapsed_string($msg->lastMessageDate)}}</span>
                     </div>
                   </a>
                 </li>
@@ -91,68 +91,28 @@
           </div>
         </li>
         <li class="dropdown toolbar-icon-bg">
-          <a href="#" class="hasnotifications dropdown-toggle" data-toggle='dropdown'><span class="icon-bg"><i class="ti ti-bell"></i></span><span class="badge badge-deeporange">2</span></a>
+          <a href="#/mobileNotif" class="hasnotifications dropdown-toggle" data-toggle='dropdown'><span class="icon-bg"><i class="ti ti-bell"></i></span><span class="badge badge-deeporange">{{count($alerts)}}</span></a>
           <div class="dropdown-menu notifications arrow">
             <div class="topnav-dropdown-header">
               <span>Notifications</span>
             </div>
             <div class="scroll-pane">
               <ul class="media-list scroll-content">
+              @foreach ($alerts as $alert)
+
                 <li class="media notification-success">
                   <a href="#">
                     <div class="media-left">
                       <span class="notification-icon"><i class="ti ti-check"></i></span>
                     </div>
                     <div class="media-body">
-                      <h4 class="notification-heading">Update 1.0.4 successfully pushed</h4>
-                      <span class="notification-time">8 mins ago</span>
+                      <h4 class="notification-heading">{{$alert['notifData']}}</h4>
+                      <span class="notification-time">{{time_elapsed_string(@$alert['notifDate'])}}</span>
                     </div>
                   </a>
                 </li>
-                <li class="media notification-info">
-                  <a href="#">
-                    <div class="media-left">
-                      <span class="notification-icon"><i class="ti ti-check"></i></span>
-                    </div>
-                    <div class="media-body">
-                      <h4 class="notification-heading">Update 1.0.3 successfully pushed</h4>
-                      <span class="notification-time">24 mins ago</span>
-                    </div>
-                  </a>
-                </li>
-                <li class="media notification-teal">
-                  <a href="#">
-                    <div class="media-left">
-                      <span class="notification-icon"><i class="ti ti-check"></i></span>
-                    </div>
-                    <div class="media-body">
-                      <h4 class="notification-heading">Update 1.0.2 successfully pushed</h4>
-                      <span class="notification-time">16 hours ago</span>
-                    </div>
-                  </a>
-                </li>
-                <li class="media notification-indigo">
-                  <a href="#">
-                    <div class="media-left">
-                      <span class="notification-icon"><i class="ti ti-check"></i></span>
-                    </div>
-                    <div class="media-body">
-                      <h4 class="notification-heading">Update 1.0.1 successfully pushed</h4>
-                      <span class="notification-time">2 days ago</span>
-                    </div>
-                  </a>
-                </li>
-                <li class="media notification-danger">
-                  <a href="#">
-                    <div class="media-left">
-                      <span class="notification-icon"><i class="ti ti-arrow-up"></i></span>
-                    </div>
-                    <div class="media-body">
-                      <h4 class="notification-heading">Initial Release 1.0</h4>
-                      <span class="notification-time">4 days ago</span>
-                    </div>
-                  </a>
-                </li>
+
+              @endforeach
               </ul>
             </div>
             <div class="topnav-dropdown-footer">

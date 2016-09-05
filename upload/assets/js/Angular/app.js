@@ -2699,7 +2699,7 @@ schoex.controller('messagesController', function(dataFactory,$rootScope,$route,$
           $scope.messageAfter = $scope.message[$scope.message.length - 1].dateSent;
         }
         currentMessageRefreshId = setInterval(currentMessagePull, 2000);
-        $("#chat-box").slimScroll({ scrollTo: $("#chat-box").prop('scrollHeight')+'px' });
+        // $("#chat-box").slimScroll({ scrollTo: $("#chat-box").prop('scrollHeight')+'px' });
       }
       showHideLoad(true);
     });
@@ -2808,7 +2808,7 @@ schoex.controller('messagesController', function(dataFactory,$rootScope,$route,$
       dataFactory.httpRequest('messages/ajax/'+$scope.messageDet.fromId+'/'+$scope.messageDet.toId+'/'+$scope.messageAfter).then(function(data) {
         angular.forEach(data, function (item) {
           $scope.message.push(item);
-          $("#chat-box").slimScroll({ scrollTo: $("#chat-box").prop('scrollHeight')+'px' });
+          // $("#chat-box").slimScroll({ scrollTo: $("#chat-box").prop('scrollHeight')+'px' });
         });
         if($scope.message[$scope.message.length - 1]){
           $scope.messageAfter = $scope.message[$scope.message.length - 1].dateSent;
@@ -2824,7 +2824,7 @@ schoex.controller('messagesController', function(dataFactory,$rootScope,$route,$
         $scope.form.disable = true;
         $scope.form.toId = $scope.messageDet.toId;
         dataFactory.httpRequest('messages/'+$scope.messageDet.id,'POST',{},$scope.form).then(function(data) {
-          $("#chat-box").slimScroll({ scrollTo: $("#chat-box").prop('scrollHeight')+'px' });
+          // $("#chat-box").slimScroll({ scrollTo: $("#chat-box").prop('scrollHeight')+'px' });
           $scope.form = {};
         });
     }

@@ -36,6 +36,13 @@ class DashboardController extends \BaseController {
 				"user_id" => $logged_user_id,
 			);
 		}
+		$return = array();
+		$mobNotifications = mob_notifications::orderBy('id', 'desc')->limit(6)->get()->toArray();
+		foreach ($mobNotifications as $value) {
+			$value['notifData'] = htmlspecialchars_decode($value['notifData'], ENT_QUOTES);
+			$return[] = $value;
+		}
+		$this->data['alerts'] = $return;
 		$this->data['messages'] = DB::select(DB::raw("SELECT messages_list.id as id,messages_list.lastMessageDate as lastMessageDate,messages_list.lastMessage as lastMessage,messages_list.messageStatus as messageStatus,users.fullName as fullName,users.photo,users.id as userId FROM messages_list LEFT JOIN users ON users.id=IF(messages_list.userId = '" . $this->data['users']->id . "',messages_list.toId,messages_list.userId) where userId='" . $this->data['users']->id . "' order by id DESC limit 5"));
 		// echo "<pre>";
 		// print_r($this->data);die;

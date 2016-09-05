@@ -21,9 +21,9 @@ $(function() {
 });
 
 var showHideLoad = function(hideIndicator) {
-    if (typeof hideIndicator === "undefined" || hideIndicator === null) {
-        $('#overlay').show();
-    }else{
-        $('#overlay').hide();
-    }
+    // if (typeof hideIndicator === "undefined" || hideIndicator === null) {
+    //     $('#overlay').show();
+    // }else{
+    //     $('#overlay').hide();
+    // }
 }
