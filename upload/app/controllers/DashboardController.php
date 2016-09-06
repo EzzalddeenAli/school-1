@@ -138,7 +138,21 @@ class DashboardController extends \BaseController {
 			$eventsArray['start'] = $this->panelInit->unixToDate($event->eventDate);
 			$toReturn['newsEvents'][] = $eventsArray;
 		}
-
+		$return = array();
+		$mobNotifications = mob_notifications::orderBy('id', 'desc')->limit(6)->get()->toArray();
+		foreach ($mobNotifications as $key => $value) {
+			$value['notifData'] = htmlspecialchars_decode($value['notifData'], ENT_QUOTES);
+			$value['notifDate'] = time_elapsed_string($value['notifDate']);
+			if (strpos($value['notifDate'], 'day') !== false) {
+				$return[$key]['icon'] = "mini-timeline-indigo";
+			} elseif (strpos($value['notifDate'], 'hours') !== false) {
+				$return[$key]['icon'] = "mini-timeline-info";
+			} else {
+				$return[$key]['icon'] = "mini-timeline-lime";
+			}
+			$return[] = $value;
+		}
+		$toReturn['alerts'] = $return;
 		$toReturn['academicYear'] = academic_year::get()->toArray();
 
 		$toReturn['baseUser'] = array("id" => $this->data['users']->id, "fullName" => $this->data['users']->fullName, "username" => $this->data['users']->username);

@@ -872,6 +872,12 @@ schoex.controller('studentsController', function(dataFactory,CSRF_TOKEN,$rootSco
       showHideLoad(true);
     });
   }
+  $scope.studentProfile = function(id){
+    dataFactory.httpRequest('students/'+id).then(function(data) {
+      $scope.form = data;
+      $scope.changeView('studentProfile');
+    });
+  }
 
   $scope.saveEdit = function(content){
     response = apiResponse(content,'edit');

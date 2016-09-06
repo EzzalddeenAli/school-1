@@ -12,6 +12,7 @@
   <meta name="author" content="KaijuThemes">
   <link type='text/css' href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400italic,600' rel='stylesheet'>
   <link type="text/css" href="{{URL::asset('assets/new_theme/fonts/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet">        <!-- Font Awesome -->
+  <link href="{{URL::asset('assets/css/jquery.gritter.css')}}" rel="stylesheet" type="text/css" />
   <link type="text/css" href="{{URL::asset('assets/new_theme/fonts/themify-icons/themify-icons.css')}}" rel="stylesheet">              <!-- Themify Icons -->
   <link type="text/css" href="{{URL::asset('assets/new_theme/plugins/codeprettifier/prettify.css')}}" rel="stylesheet">                <!-- Code Prettifier -->
   <link type="text/css" href="{{URL::asset('assets/new_theme/plugins/iCheck/skins/minimal/blue.css')}}" rel="stylesheet">              <!-- iCheck -->
@@ -413,6 +414,7 @@ while (list($key, $value) = each($panelInit->panelItems)) {
   <script src="{{URL::asset('assets/js/intlTelInput.min.js')}}"></script>
   <!-- <script src="bower_components/oclazyload/dist/ocLazyLoad.min.js"></script> -->
   <script src="{{URL::asset('assets/plugins/skylo/vendor/scripts/skylo.js')}}"></script>
+  <script src="<?php echo URL::asset('/');?>assets/js/jquery.gritter.min.js" type="text/javascript"></script>
   <div ng-spinner-loader></div>
   <input type="hidden" id="rooturl" value="{{URL::asset('/')}}"/>
   <input type="hidden" id="utilsScript" value="{{URL::asset('assets/js/utils.js')}}"/>
