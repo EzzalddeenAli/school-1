@@ -4,12 +4,7 @@
     
     <div class="list-group inbox-menu list-group-alternate">
       <a href="#" class="list-group-item active"><i class="ti ti-email"></i>{{phrase.Messages}}<span class="badge badge-primary"></span></a>
-      <a href="#" class="list-group-item"><i class="ti ti-share"></i>Sent </a>
-      <a href="#" class="list-group-item"><i class="ti ti-file"></i>Drafts <span class="badge badge-orange">1</span></a>
-      <a href="#" class="list-group-item"><i class="ti ti-trash"></i>Trash</a>
-      <a href="#" class="list-group-item"><i class="ti ti-control-record circle-red"></i>Important</a>
-      <a href="#" class="list-group-item"><i class="ti ti-control-record circle-green"></i>Work</a>
-      <a href="#" class="list-group-item"><i class="ti ti-control-record circle-purple"></i>Personal</a>
+      <a href="#/messages" class="list-group-item"><i class="ti ti-share"></i>Inbox </a>
     </div>
   </div><!-- col-sm-3 -->
   <div class="col-sm-9" ng-show="views.list">
@@ -60,9 +55,9 @@
           <div class="clearfix">
             <div class="pull-right">
               <div class="box-footer clearfix">
-                  <div class="pull-right">
-                      <dir-pagination-controls class="pull-right" on-page-change="pageChanged(newPageNumber)" template-url="templates/dirPagination.html" ></dir-pagination-controls>
-                  </div>
+                <div class="pull-right">
+                  <dir-pagination-controls class="pull-right" on-page-change="pageChanged(newPageNumber)" template-url="templates/dirPagination.html" ></dir-pagination-controls>
+                </div>
               </div>
             </div>
           </div>
@@ -70,63 +65,114 @@
       </div>
     </div>
   </div><!-- col-sm-8 -->
-  <section class="content" ng-show="views.create">
+  <section class="content" ng-show="views.read">
+
     <div class="col-md-9">
-      <div class="panel panel-inbox">
+      <div class="input-group mb-xl">
+        <input type="text" class="form-control input-lg" placeholder="Search mail...">
+        <span class="input-group-btn">
+          <button class="btn btn-default btn-lg" type="button"><i class="ti ti-search"></i></button>
+        </span>
+      </div><!-- /input-group -->
+
+      <div class="panel panel-inbox-read">
         <div class="panel-body">
           <div class="inbox-mail-heading">
             <div class="clearfix">
               <div class="pull-left">
-                <a href="app-inbox" class="btn btn-lg btn-default"><i class="ti ti-shift-left fa-rotate-270"></i></a>
-                <div class="btn-group">
-                  <a href="#" class="btn btn-lg btn-default"><i class="ti ti-save"></i></a>
-                  <a href="#" class="btn btn-lg btn-default"><i class="ti ti-trash"></i></a>
-                </div>
-              </div>
-              <div class="pull-right">
-                <a ng-click="changeView('list')" class="floatRTL btn btn-danger btn-flat pull-right marginBottom15">{{phrase.Return}}</a>
+                <a ng-click="changeView('list')" class="floatRTL btn btn-success btn-flat pull-right marginBottom15">{{phrase.Return}}</a>
               </div>
             </div>
           </div>
-          <form action="" role="form" id="inbox-compose-form" class="form-horizontal p-md" ng-submit="sendMessageNow()" novalidate>
-            <div class="form-group mb-sm">
-              <div class="col-md-12">
-                <div class="row">
-                  <div class="col-xs-10">
-                    <div class="input-group input-group-lg" ng-class="{'has-error': sendMessage.toId.$invalid}">
-                      <span class="input-group-addon">{{phrase.sendMessageTo}} *</span>
-                      <input type="text" class="form-control input-lg" ng-model="form.toId" class="form-control" required placeholder="{{phrase.sendMessageTo}}">
-                    </div>
-                  </div>
-                  <div class="col-xs-2"><a type="button" ng-click="linkUser()" class="btn btn-danger btn-flat">{{phrase.searchUsers}}</a></div>
-                </div>
-              </div>
+
+          <hr class=" mb10">
+
+          <div class="msg-body" chat-box>
+           <div class="box-body chat" id="chat-box" chat-box>
+            <p id="loadOld" class="text-muted well well-sm no-shadow text-center" ng-click="loadOld()">{{phrase.loadOldMessages}}</p>
+            <div class="item messageItem" ng-repeat="messageOne in message">
+              <img alt="{{messageOne.fullName}}" class="user-image img-circle" style="width:45px; height:45px;" ng-src="{{'dashboard/profileImage/'+messageOne.userId}}">
+              <p class="message">
+                <a href="" class="name">
+                  <small class="text-muted pull-right"><i class="fa fa-clock-o"></i> {{messageOne.dateSent * 1000 | date:'medium'}}</small>
+                  {{messageOne.fullName}}
+                </a>
+                {{messageOne.messageText}}
+              </p>
             </div>
-            <div class="form-group mb-sm" style="display:none;">
-              <div class="col-md-12"><input type="text" class="form-control"></div>
-            </div>
-            <div class="form-group mb-sm">
-              <div class="col-md-12"><input type="text" class="form-control input-lg" placeholder="Subject for email"></div>
-            </div>
-            <div class="form-group"  ng-class="{'has-error': sendMessage.messageText.$invalid}">
-              <div class="col-xs-12">
-                <textarea name="messageText" class="form-control" ng-model="form.messageText" placeholder="{{phrase.message}}" style="height:250px"></textarea>
-              </div>
-            </div>
-            <div class="clearfix">
-              <div class="form-group">
-                <div class="col-sm-12">
-                  <div class="pull-right">
-                    <button type="submit" class="btn btn-lg btn-success" ng-disabled="sendMessage.$invalid">{{phrase.sendMessage}}</button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </form>
+          </div>
         </div>
+        <hr>
+        <div class="msg-attachments">
+        <div class="input-group">
+            <input class="form-control" ng-enter="replyMessage()" ng-disabled="form.disable" ng-model="form.reply" placeholder="{{phrase.typeReply}}">
+            <div class="input-group-btn">
+              <button class="btn btn-success" ng-click="replyMessage()"><i class="fa fa-plus"></i></button>
+            </div>
+          </div>
       </div>
     </div>
-  </section>
+  </div>
+</div>
+</section>
+<section class="content" ng-show="views.create">
+  <div class="col-md-9">
+    <div class="panel panel-inbox">
+      <div class="panel-body">
+        <div class="inbox-mail-heading">
+          <div class="clearfix">
+            <div class="pull-left">
+              <a href="app-inbox" class="btn btn-lg btn-default"><i class="ti ti-shift-left fa-rotate-270"></i></a>
+              <div class="btn-group">
+                <a href="#" class="btn btn-lg btn-default"><i class="ti ti-save"></i></a>
+                <a href="#" class="btn btn-lg btn-default"><i class="ti ti-trash"></i></a>
+              </div>
+            </div>
+            <div class="pull-right">
+              <a ng-click="changeView('list')" class="floatRTL btn btn-danger btn-flat pull-right marginBottom15">{{phrase.Return}}</a>
+            </div>
+          </div>
+        </div>
+        <form action="" role="form" id="inbox-compose-form" class="form-horizontal p-md" ng-submit="sendMessageNow()" novalidate>
+          <div class="form-group mb-sm">
+            <div class="col-md-12">
+              <div class="row">
+                <div class="col-xs-10">
+                  <div class="input-group input-group-lg" ng-class="{'has-error': sendMessage.toId.$invalid}">
+                    <span class="input-group-addon">{{phrase.sendMessageTo}} *</span>
+                    <input type="text" class="form-control input-lg" ng-model="form.toId" class="form-control" required placeholder="{{phrase.sendMessageTo}}">
+                  </div>
+                </div>
+                <div class="col-xs-2"><a type="button" ng-click="linkUser()" class="btn btn-danger btn-flat">{{phrase.searchUsers}}</a></div>
+              </div>
+            </div>
+          </div>
+          <div class="form-group mb-sm" style="display:none;">
+            <div class="col-md-12"><input type="text" class="form-control"></div>
+          </div>
+          <div class="form-group mb-sm">
+            <div class="col-md-12"><input type="text" class="form-control input-lg" placeholder="Subject for email"></div>
+          </div>
+          <div class="form-group"  ng-class="{'has-error': sendMessage.messageText.$invalid}">
+            <div class="col-xs-12">
+              <textarea name="messageText" class="form-control" ng-model="form.messageText" placeholder="{{phrase.message}}" style="height:250px"></textarea>
+            </div>
+          </div>
+          <div class="clearfix">
+            <div class="form-group">
+              <div class="col-sm-12">
+                <div class="pull-right">
+                  <button type="submit" class="btn btn-lg btn-success" ng-disabled="sendMessage.$invalid">{{phrase.sendMessage}}</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
 </div>
 <modal visible="searchUsers">
   <div class="row">

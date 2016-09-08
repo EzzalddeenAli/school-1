@@ -567,9 +567,9 @@ schoex.directive('chatBox', function($parse, $timeout){
         transclude: false,
         compile: function(element, attrs) {
           return function (scope, slider, attrs, controller) {
-            $('#chat-box').slimScroll({
-              height: '500px',alwaysVisible: true,start : "bottom"
-            });
+            // $('#chat-box').slimScroll({
+            //   height: '500px',alwaysVisible: true,start : "bottom"
+            // });
           };
         }
     };
@@ -714,8 +714,6 @@ schoex.directive('showtab',
             }
         };
     });
-
-
 schoex.filter('object2Array', function() {
   return function(input) {
     var out = [];

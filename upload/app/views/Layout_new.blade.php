@@ -27,6 +27,15 @@
     <link type="text/css" href="{{URL::asset('assets/new_theme/plugins/jvectormap/jquery-jvectormap-2.0.2.css')}}" rel="stylesheet">      <!-- jVectorMap -->
     <link type="text/css" href="{{URL::asset('assets/new_theme/plugins/switchery/switchery.css')}}" rel="stylesheet">
   <link type="text/css" href="{{URL::asset('assets/new_theme/css/styles.css')}}" rel="stylesheet">                                     <!-- Core CSS with all styles -->
+  <style type="text/css" media="print">
+@page {
+    size: auto;   /* auto is the initial value */
+    margin: 0;  /* this affects the margin in the printer settings */
+}
+.btn{
+  display: none;
+}
+</style>
   </head>
   <script>
     var baseUrl = "{{URL::to('/')}}";
