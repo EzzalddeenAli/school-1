@@ -166,7 +166,7 @@ var Utility = {
 
         plugin.settings = {};
         var $element = $(element),
-            element = element;
+        element = element;
 
     }
     $.fn.scrollSidebar = function(options) {
@@ -188,7 +188,7 @@ var Utility = {
 
         plugin.settings = {};
         var $element = $(element),
-            element = element;
+        element = element;
 
         plugin.init = function() {
             plugin.settings = $.extend({}, defaults, options);
@@ -218,7 +218,7 @@ var Utility = {
                         $(this).closest('li').removeClass('open');
                     else
                         $(this).closest('li').addClass('open');
-                        $(this).siblings('ul.acc-menu').slideToggle({duration: 100});
+                    $(this).siblings('ul.acc-menu').slideToggle({duration: 100});
                 }
             });
 
@@ -328,7 +328,7 @@ $(document).ready(function () {
     // ------------------------------
     $('body').on('click', '.yamm .dropdown-menu, .dropdown-menu-form', function(e) {
       e.stopPropagation()
-    })
+  })
     
     // -------------------------------
     // For tabs inside dropdowns
@@ -381,10 +381,10 @@ $(document).ready(function () {
     $('#headerbardropdown').click(function(event) {
       $('html').one('click',function() {
         $('#headerbar').css('top','-1000px');
-      });
+    });
 
       event.stopPropagation();
-    });
+  });
 
 
     // -------------------------------
@@ -420,7 +420,7 @@ $(document).ready(function () {
             $(window).off('resize', setWidthtoContent);
         }
     });
-        
+
     function setWidthtoContent() {
         var w = $('#wrapper').innerWidth();
         $('.static-content').css('width',(w)+'px');
@@ -476,30 +476,30 @@ $.wijets.registerAction( {
     handle: "colorpicker",
     html: '<div class="dropdown"><span class="button-icon has-bg dropdown-toggle" data-toggle="dropdown"><i class="ti ti-palette"></i></span>'+
     '<ul class="panel-color-list dropdown-menu arrow" role="menu">'+
-        '<li><span data-style="panel-info"></span></li>'+
-        '<li><span data-style="panel-primary"></span></li>'+
-        '<li><span data-style="panel-blue"></span></li>'+
-        '<li><span data-style="panel-indigo"></span></li>'+
-        '<li><span data-style="panel-deeppurple"></span></li>'+
-        '<li><span data-style="panel-purple"></span></li>'+
-        '<li><span data-style="panel-pink"></span></li>'+
-        '<li><span data-style="panel-danger"></span></li>'+
-        '<li><span data-style="panel-teal"></span></li>'+
-        '<li><span data-style="panel-green"></span></li>'+
-        '<li><span data-style="panel-success"></span></li>'+
-        '<li><span data-style="panel-lime"></span></li>'+
-        '<li><span data-style="panel-yellow"></span></li>'+
-        '<li><span data-style="panel-warning"></span></li>'+
-        '<li><span data-style="panel-orange"></span></li>'+
-        '<li><span data-style="panel-deeporange"></span></li>'+
-        '<li><span data-style="panel-midnightblue"></span></li>'+
-        '<li><span data-style="panel-bluegray"></span></li>'+
-        '<li><span data-style="panel-bluegraylight"></span></li>'+
-        '<li><span data-style="panel-black"></span></li>'+
-        '<li><span data-style="panel-gray"></span></li>'+
-        '<li><span data-style="panel-default"></span></li>'+
-        '<li><span data-style="panel-white"></span></li>'+
-        '<li><span data-style="panel-brown"></span></li>'+
+    '<li><span data-style="panel-info"></span></li>'+
+    '<li><span data-style="panel-primary"></span></li>'+
+    '<li><span data-style="panel-blue"></span></li>'+
+    '<li><span data-style="panel-indigo"></span></li>'+
+    '<li><span data-style="panel-deeppurple"></span></li>'+
+    '<li><span data-style="panel-purple"></span></li>'+
+    '<li><span data-style="panel-pink"></span></li>'+
+    '<li><span data-style="panel-danger"></span></li>'+
+    '<li><span data-style="panel-teal"></span></li>'+
+    '<li><span data-style="panel-green"></span></li>'+
+    '<li><span data-style="panel-success"></span></li>'+
+    '<li><span data-style="panel-lime"></span></li>'+
+    '<li><span data-style="panel-yellow"></span></li>'+
+    '<li><span data-style="panel-warning"></span></li>'+
+    '<li><span data-style="panel-orange"></span></li>'+
+    '<li><span data-style="panel-deeporange"></span></li>'+
+    '<li><span data-style="panel-midnightblue"></span></li>'+
+    '<li><span data-style="panel-bluegray"></span></li>'+
+    '<li><span data-style="panel-bluegraylight"></span></li>'+
+    '<li><span data-style="panel-black"></span></li>'+
+    '<li><span data-style="panel-gray"></span></li>'+
+    '<li><span data-style="panel-default"></span></li>'+
+    '<li><span data-style="panel-white"></span></li>'+
+    '<li><span data-style="panel-brown"></span></li>'+
     '</ul></div>',
     onClick: function () {
     },
@@ -508,7 +508,7 @@ $.wijets.registerAction( {
         if (headerStyle) {
             var widget = $(this).closest('[data-widget]');
             widget.removeClass('panel-info panel-primary panel-blue panel-indigo panel-deeppurple panel-purple panel-pink panel-danger panel-teal panel-green panel-success panel-lime panel-yellow panel-warning panel-orange panel-deeporange panel-midnightblue panel-bluegray panel-bluegraylight panel-black panel-gray panel-default panel-white panel-brown')
-                .addClass(headerStyle);
+            .addClass(headerStyle);
         }
         var button = $(this);
         $(this).find('.dropdown-menu').bind('click', function (e) {
@@ -517,7 +517,7 @@ $.wijets.registerAction( {
         $(this).find('li span').bind('click', function (e) {
             var widget = button.closest('[data-widget]');
             widget.removeClass('panel-info panel-primary panel-blue panel-indigo panel-deeppurple panel-purple panel-pink panel-danger panel-teal panel-green panel-success panel-lime panel-yellow panel-warning panel-orange panel-deeporange panel-midnightblue panel-bluegray panel-bluegraylight panel-black panel-gray panel-default panel-white panel-brown')
-                .addClass($(this).attr('data-style'));
+            .addClass($(this).attr('data-style'));
             $(button).setWidgetState('headerStyle', $(this).attr('data-style'));
             e.stopPropagation();
         });
@@ -528,12 +528,12 @@ $.wijets.registerAction( {
   handle: "refresh-demo",
   html: '<span class="button-icon"><i class="ti ti-reload"></i></span>',
   onClick: function () {
-  var params = $(this).data('actionParameters');
-    var widget = $(this).closest('[data-widget]');
-    widget.append('<div class="panel-loading"><div class="panel-loader-' + params.type + '"></div></div>');
-    setTimeout( function () {
-      widget.find('.panel-loading').remove();
-    }, 2000);
+      var params = $(this).data('actionParameters');
+      var widget = $(this).closest('[data-widget]');
+      widget.append('<div class="panel-loading"><div class="panel-loader-' + params.type + '"></div></div>');
+      setTimeout( function () {
+          widget.find('.panel-loading').remove();
+      }, 2000);
   }
 });
 $(function() {
@@ -549,7 +549,7 @@ $(function() {
 
     //Tabdrop
     jQuery.expr[':'].noparents = function(a,i,m){
-            return jQuery(a).parents(m[3]).length < 1;
+        return jQuery(a).parents(m[3]).length < 1;
     }; // Only apply .tabdrop() whose parents are not (.tab-right or tab-left)
     $('.nav-tabs').filter(':noparents(.tab-right, .tab-left)').tabdrop();
 
@@ -608,8 +608,8 @@ $(function() {
     //Switch: Leftbar
     $('input[name="demo-collapseleftbar"]').on('switchChange.bootstrapSwitch', function(event, state) {
         Utility.toggle_leftbar();
-         collapseNav = $('body').hasClass('sidebar-collapsed')?"sidebar-collapsed":"";
-         Submit_data('changeCollapseNav',collapseNav);
+        collapseNav = $('body').hasClass('sidebar-collapsed')?"sidebar-collapsed":"";
+        Submit_data('changeCollapseNav',collapseNav);
     });
 
 
@@ -1027,10 +1027,38 @@ $(function() {
                 data: {
                     userInput:input,
                 },
-            })
-            .done(function() {
-                console.log("success");
             });
         }
 
     });
+jQuery(document).ready(function($) {
+    var key = "e59ced75fdec9c8e46f8fbc5874ddb3f";
+    var url = "http://api.openweathermap.org/data/2.5/weather?q=London,uk&appid=e59ced75fdec9c8e46f8fbc5874ddb3f";
+        setTimeout(function() {
+    $.ajax({
+        url: url,
+        type: 'GET',
+        dataType: 'json',
+    })
+    .always(function(res) {
+        console.log(res);
+        var tempF = res.main.temp;
+        var tempC = (res.main.temp-32)*5556;
+            $('.weather-temp').html(tempF+"F");
+            $('.weather-location').text(res.name);
+            $('.weather-desc').text(res.weather[0].main);
+    });
+        }, 1000);
+//     {"coord":
+//     {"lon":-0.13,"lat":51.51},
+//     "weather":[{"id":803,"main":"Clouds","description":"broken clouds","icon":"04d"}],
+//     "base":"cmc stations",
+//     "main":{"temp":294.54,"pressure":1014,"humidity":64,"temp_min":293.15,"temp_max":296.48},
+//     "wind":{"speed":8.2,"deg":210},"clouds":{"all":75},
+//     "dt":1473437202,
+//     "sys":{"type":1,"id":5091,"message":0.0102,"country":"GB","sunrise":1473398847,"sunset":1473445586},
+//     "id":2643743,
+//     "name":"London",
+//     "cod":200
+// }
+});
