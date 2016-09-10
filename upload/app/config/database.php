@@ -48,9 +48,9 @@ return array(
 		'mysql' => array(
 			'driver' => 'mysql',
 			'host' => 'localhost',
-			'database' => 'schoex',
-			'username' => 'root',
-			'password' => '',
+			'database' => 'academy',
+			'username' => 'academy_root',
+			'password' => 'Liverpool0121',
 			'charset' => 'utf8',
 			'collation' => 'utf8_unicode_ci',
 			'prefix' => '',
