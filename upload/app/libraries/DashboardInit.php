@@ -100,8 +100,11 @@ class DashboardInit {
 		);
 
 		$settings = settings::get();
-		$this->settingsArray = settingsArrayPrep($settings);
-
+		$ar = array();
+		foreach ($settings as $key => $val) {
+			$ar[$val->fieldName] = $val->fieldValue;
+		}
+		$this->settingsArray = $ar;
 		$staticPages = static_pages::where('pageActive', '1')->get();
 		foreach ($staticPages as $pages) {
 			$this->panelItems['staticContent']['children'][md5(uniqid())] = array("title" => $pages->pageTitle, "url" => URL::to('#/static') . "/" . $pages->id, "icon" => "ti ti-file-text", "permissions" => array('admin', 'teacher', 'student', 'parent'));
