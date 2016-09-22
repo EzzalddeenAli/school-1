@@ -492,7 +492,6 @@ console.log('done2');
 				},
 			})
 			.done(function() {
-				console.log("success");
 			});
 		}
 

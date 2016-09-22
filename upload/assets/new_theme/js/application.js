@@ -1053,6 +1053,29 @@ jQuery(document).ready(function($) {
             $('.weather-desc').text(res.weather[0].main);
     });
         }, 1000);
+        $(document).ready(function() {
+                });
+          // var term=$('.search-query').val()
+  var autocomplete = $("#gsearch").kendoAutoComplete({
+    minLength: 1,
+    dataTextField: "username",
+    template:kendo.template($("#search_box_tpl").html()),
+    dataSource: {
+    serverFiltering: true,
+    schema:
+    {
+        data: "data",
+        count: "count"
+    },
+      transport: {
+        read:{
+          dataType: "json",
+          url: baseUrl+"/students/gsearch"
+        }
+      }
+    },
+    height: 400
+  }).data("kendoAutoComplete");
 //     {"coord":
 //     {"lon":-0.13,"lat":51.51},
 //     "weather":[{"id":803,"main":"Clouds","description":"broken clouds","icon":"04d"}],

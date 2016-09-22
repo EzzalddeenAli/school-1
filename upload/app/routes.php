@@ -139,6 +139,7 @@ Route::group(array('prefix' => '/', 'before' => 'auth.Ui|auth.token|api.csrf'), 
 	Route::get('/students/listAll', 'StudentsController@listAll');
 	Route::get('/students/listAll/{page}', 'StudentsController@listAll');
 	Route::get('/students/search/{keyword}/{page}', 'StudentsController@search');
+	Route::get('/students/gsearch', 'StudentsController@gsearch');
 	Route::post('/students', 'StudentsController@create');
 	Route::get('/students/{id}', 'StudentsController@fetch');
 	Route::post('/students/printbulk/marksheet', 'StudentsController@marksheetBulkPDF');

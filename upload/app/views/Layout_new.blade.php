@@ -54,7 +54,7 @@
       <div class="toolbar-icon-bg hidden-xs" id="toolbar-search">
         <div class="input-group">
           <span class="input-group-btn"><button class="btn" type="button"><i class="ti ti-search"></i></button></span>
-          <input type="text" class="form-control" placeholder="Search...">
+          <input type="text" class="form-control" id="gsearch" placeholder="Search...">
           <span class="input-group-btn"><button class="btn" type="button"><i class="ti ti-close"></i></button></span>
         </div>
       </div>
@@ -384,7 +384,16 @@ while (list($key, $value) = each($panelInit->panelItems)) {
       <!-- Load site level scripts -->
 <!-- <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
   <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js"></script> -->
+  <script type="text/x-kendo-template" id="search_box_tpl">
+  <a href="" style="text-decoration: blink;cursor: auto;">
+    <span class="k-state-default">
+      <h5 class="label label-success">#: data.username #</h5>
+      <p><small class="bold">Status</small> #: data.email #</p>
+    </span>
+  </a>
+</script>
   <script type="text/javascript" src="{{URL::asset('assets/new_theme/js/jquery-1.10.2.min.js')}}"></script>               <!-- Load jQuery -->
+   <script type="text/javascript" src="{{URL::asset('assets/new_theme/plugins/kendo.all.min.js')}}"></script>
   <script type="text/javascript" src="{{URL::asset('assets/new_theme/js/jqueryui-1.10.3.min.js')}}"></script>               <!-- Load jQueryUI -->
   <script type="text/javascript" src="{{URL::asset('assets/new_theme/js/bootstrap.min.js')}}"></script>                 <!-- Load Bootstrap -->
   <script type="text/javascript" src="{{URL::asset('assets/new_theme/js/enquire.min.js')}}"></script>                   <!-- Load Enquire -->
