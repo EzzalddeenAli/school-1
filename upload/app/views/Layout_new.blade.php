@@ -380,17 +380,23 @@ while (list($key, $value) = each($panelInit->panelItems)) {
             <div class="clearfix"></div>
         </div>
     </modal>
+    <modal visible="showModal"><div ng-bind-html="modalContent"></div></modal>
       <!-- /Switcher -->
       <!-- Load site level scripts -->
 <!-- <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
   <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js"></script> -->
   <script type="text/x-kendo-template" id="search_box_tpl">
-  <a href="" style="text-decoration: blink;cursor: auto;">
+  <div class="item">
+
+  <a ng-click="studentProfile( data.id )" style="text-decoration: blink;cursor: auto;">
     <span class="k-state-default">
       <h5 class="label label-success">#: data.username #</h5>
-      <p><small class="bold">Status</small> #: data.email #</p>
+      <p>#: data.email #</p>
+      <p><small class="bold">Class</small> #: data.studentClass #</p>
     </span>
   </a>
+
+  </div>
 </script>
   <script type="text/javascript" src="{{URL::asset('assets/new_theme/js/jquery-1.10.2.min.js')}}"></script>               <!-- Load jQuery -->
    <script type="text/javascript" src="{{URL::asset('assets/new_theme/plugins/kendo.all.min.js')}}"></script>

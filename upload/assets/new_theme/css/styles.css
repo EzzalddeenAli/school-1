@@ -29158,5 +29158,15 @@ fieldset[disabled] .datepicker table tr td span.active.disabled:hover.active {
     width: 25% !important;
   }
   #gsearch-list{
-    width: 352px !important;
+    width: 302px !important;
+        background: #fafafa;
   }
+  #gsearch-list ul li{
+list-style:none !important;
+  }
+    #gsearch-list ul li a:hover{
+background: #gray
+  }
+  #topnav #toolbar-search .input-group .form-control {
+    margin: 0px !important;
+}

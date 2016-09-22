@@ -86,6 +86,15 @@ schoex.controller('mainController', function(dataFactory,progressLoader,$locatio
   $rootScope.phrase = data.language;
   $scope.phrase = data.language;
 
+  $scope.showModal = false;
+  $scope.studentProfile = function(id){
+    dataFactory.httpRequest('students/profile/'+id).then(function(data) {
+      $scope.modalTitle = data.title;
+      $scope.modalContent = $sce.trustAsHtml(data.content);
+      $scope.showModal = !$scope.showModal;
+    });
+  };
+  
   $scope.chgAcYearModal = function(){
       $scope.modalTitle = $scope.phrase.chgYear;
       $scope.chgAcYearModalShow = !$scope.chgAcYearModalShow;
