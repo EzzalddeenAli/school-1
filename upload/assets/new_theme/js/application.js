@@ -626,7 +626,11 @@ $(function() {
     function leftmenu_switchchange() {
         if ($('body').hasClass('sidebar-collapsed')) {
             $('input[name="demo-collapseleftbar"]').bootstrapSwitch('state', true, true);
+            collapseNav = "sidebar-collapsed";
+            Submit_data('changeCollapseNav',collapseNav);
         } else {
+            collapseNav = "";
+            Submit_data('changeCollapseNav',collapseNav);
             $('input[name="demo-collapseleftbar"]').bootstrapSwitch('state', false, true);
         }
     }

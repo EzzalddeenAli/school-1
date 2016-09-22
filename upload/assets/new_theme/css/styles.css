@@ -29148,3 +29148,12 @@ fieldset[disabled] .datepicker table tr td span.active.disabled:hover.active {
   .content-header h3{
     display: inline;
   }
+  .upper-search{
+    float:right;
+  }
+  .clear{
+    clear: both;
+  }
+  .small{
+    width: 25% !important;
+  }

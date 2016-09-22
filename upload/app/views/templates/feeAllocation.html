@@ -5,17 +5,15 @@
   <a ng-click="addFeeAllocation()" class="floatRTL btn btn-success btn-flat pull-right marginBottom15">{{phrase.addFeeAllocation}}</a>
 </section>
 
-
+<div class="input-group pull-right">
+  <input type="text" name="table_search" ng-model="searchText" placeholder="{{phrase.Search}}" class="form-control pull-right small">
+  <span class="input-group-addon"><i class="fa fa-search"></i></span>
+</div>
+<div class="clear"></div>
 <section class="content" ng-show="views.list">
   <div class="panel panel-default">
       <div class="panel-heading">
           <h3 class="panel-title">{{phrase.listFeeAllocation}}</h3>
-          <div class="box-tools">
-              <div class="input-group">
-                <input type="text" name="table_search" ng-model="searchText" placeholder="{{phrase.Search}}" class="form-control input-sm">
-                <span class="input-group-addon"><i class="fa fa-search"></i></span>
-              </div>
-          </div>
       </div>
       <div class="panel-body table-responsive">
           <h4>{{phrase.classesFeeAllocation}}</h4>

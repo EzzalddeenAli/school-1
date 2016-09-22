@@ -50,7 +50,7 @@
           </span>
         </a>
       </span>
-      <a class="navbar-brand" href="index.html">Avenxo</a>
+      <a class="navbar-brand" href="#/"><?php echo $panelInit->settingsArray['siteTitle']?></a>
       <div class="toolbar-icon-bg hidden-xs" id="toolbar-search">
         <div class="input-group">
           <span class="input-group-btn"><button class="btn" type="button"><i class="ti ti-search"></i></button></span>
@@ -61,16 +61,16 @@
     </div><!-- logo-area -->
     <ul class="nav navbar-nav toolbar pull-right">
       <li class="toolbar-icon-bg visible-xs-block" id="trigger-toolbar-search">
-        <a href="#"><span class="icon-bg"><i class="ti ti-search"></i></span></a>
+        <a><span class="icon-bg"><i class="ti ti-search"></i></span></a>
       </li>
       <li class="toolbar-icon-bg hidden-xs">
-        <a href="#" ng-click="chgAcYearModal()"><span class="icon-bg"><i class="ti ti-calendar"></i></span></i></a>
+        <a ng-click="chgAcYearModal()"><span class="icon-bg"><i class="ti ti-calendar"></i></span></i></a>
       </li>
       <li class="toolbar-icon-bg hidden-xs" id="trigger-fullscreen">
-        <a href="#" class="toggle-fullscreen"><span class="icon-bg"><i class="ti ti-fullscreen"></i></span></i></a>
+        <a class="toggle-fullscreen"><span class="icon-bg"><i class="ti ti-fullscreen"></i></span></i></a>
       </li>
       <li class="dropdown toolbar-icon-bg hidden-xs">
-        <a href="#" class="hasnotifications dropdown-toggle" data-toggle='dropdown'><span class="icon-bg"><i class="ti ti-email"></i></span><span
+        <a class="hasnotifications dropdown-toggle" data-toggle='dropdown'><span class="icon-bg"><i class="ti ti-email"></i></span><span
           class="badge badge-deeporange">{{$stats['newMessages']==0?"":$stats['newMessages']}}</span></a>
           <div class="dropdown-menu notifications arrow">
             <div class="topnav-dropdown-header">
@@ -96,12 +96,12 @@
               </ul>
             </div>
             <div class="topnav-dropdown-footer">
-              <a href="#">See all messages</a>
+              <a href="#/messages">See all messages</a>
             </div>
           </div>
         </li>
         <li class="dropdown toolbar-icon-bg">
-          <a href="#/mobileNotif" class="hasnotifications dropdown-toggle" data-toggle='dropdown'><span class="icon-bg"><i class="ti ti-bell"></i></span><span class="badge badge-deeporange">{{count($alerts)}}</span></a>
+          <a class="hasnotifications dropdown-toggle" data-toggle='dropdown'><span class="icon-bg"><i class="ti ti-bell"></i></span><span class="badge badge-deeporange">{{count($alerts)>0?count($alerts):""}}</span></a>
           <div class="dropdown-menu notifications arrow">
             <div class="topnav-dropdown-header">
               <span>Notifications</span>
@@ -111,7 +111,7 @@
               @foreach ($alerts as $alert)
 
                 <li class="media notification-success">
-                  <a href="#">
+                  <a>
                     <div class="media-left">
                       <span class="notification-icon"><i class="ti ti-check"></i></span>
                     </div>
@@ -126,12 +126,12 @@
               </ul>
             </div>
             <div class="topnav-dropdown-footer">
-              <a href="#">See all notifications</a>
+              <a href="#/mobileNotif">See all notifications</a>
             </div>
           </div>
         </li>
         <li class="dropdown toolbar-icon-bg">
-          <a href="#" class="dropdown-toggle username" data-toggle="dropdown">
+          <a class="dropdown-toggle username" data-toggle="dropdown">
             <img src="{{URL::to('/dashboard/profileImage/'.$users['id'])}}" class="img-responsive img-circle">
           </a>
           <ul class="dropdown-menu userinfo arrow">

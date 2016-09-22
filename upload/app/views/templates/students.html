@@ -32,21 +32,25 @@
 <a ng-if="userRole == 'admin'" href="javascript:window.print()" class="btn btn-success btn-flat pull-right marginBottom15 no-print">{{phrase.Print}}</a>
 <hr>
 <br>
-<div class="panel panel-default">
-  <div class="panel-heading">
-    <h3 class="panel-title">{{phrase.listStudents}}</h3>
-    <div class="box-tools">
-      <div class="input-group">
-        <input type="text" tooltip title="{{phrase.minCharLength3}}" name="table_search" ng-model="searchText" ng-change="searchDB()" placeholder="{{phrase.Search}}" class="form-control input-sm">
+<div class="row">
+  
+<div class="col-md-3 col-sm-9 col-md-offset-6">
+  <div class="input-group">
+        <input type="text" tooltip title="{{phrase.minCharLength3}}" name="table_search" ng-model="searchText" ng-change="searchDB()" placeholder="{{phrase.Search}}" class="form-control pull-right">
         <span class="input-group-addon"><i class="fa fa-search"></i></span>
       </div>
-      <div>
-        <select class="form-control input-sm" name="searchClass" ng-model="searchClass" ng-change="searchDB()">
+</div>
+<div class="col-sm-3">
+        <select class="form-control pull-right" name="searchClass" ng-model="searchClass" ng-change="searchDB()">
           <option value="0">All Classes</option>
           <option ng-repeat="class in classes" value="{{class.id}}">{{class.className}}</option>
         </select>
-      </div>
-    </div>
+</div>
+</div>
+<div class="clear"></div>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">{{phrase.listStudents}}</h3>
   </div>
   <div class="panel-body table-responsive">
     <table class="table table-hover">
